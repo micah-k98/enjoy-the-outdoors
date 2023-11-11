@@ -4,6 +4,16 @@
     }
 }
 
+@media screen and (max-width: 1200px) {
+    .contact-us {
+        font-size: x-small;
+    }
+
+    .contact-us h6 {
+        font-size: 11px;
+    }
+}
+
 @media screen and (max-width: 1000px) {
     .logo {
         width: 200px;
@@ -11,6 +21,10 @@
 
     .navbar-nav > li {
         font-size: 15px;;
+    }
+
+    .footer-nav {
+        padding: 0.5rem 2rem 0.5rem 2rem;
     }
 }
 
@@ -23,6 +37,10 @@
 @media screen and (max-width: 576px) {
     .logo {
         width: 125px;
+    }
+
+    .contact-us {
+        font-size: xx-small;
     }
 }
 
