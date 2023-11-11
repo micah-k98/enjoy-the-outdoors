@@ -21,4 +21,10 @@ body {
 }
 
 
+/* NAVBAR */
+.navbar {
+    padding: 0;
+    flex-wrap: wrap;
+}
+
 
