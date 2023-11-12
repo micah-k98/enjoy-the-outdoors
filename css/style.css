@@ -66,3 +66,16 @@ body {
     height: 45px;
 }
 
+
+/* HOME PAGE - MAIN CONTENT */
+.content-container {
+    align-items: center;
+    margin: 2rem;
+    background-color: #def9ff;
+}
+
+.side-text {
+    padding: 4rem;
+}
+
+
