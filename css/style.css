@@ -76,9 +76,14 @@ body {
 
 .side-text {
     padding: 4rem;
+    
 }
 
 .bottom-content {
     background-color: #fff3cf;
+}
+
+.goals-card {
+    justify-content: center;
 }
 

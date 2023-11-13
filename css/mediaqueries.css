@@ -1,10 +1,12 @@
 @media screen and (max-width: 1400px) {
+    /* NAVBAR */
     .logo {
         width: 250px;
     }
 }
 
 @media screen and (max-width: 1200px) {
+    /* FOOTER */
     .contact-us {
         font-size: x-small;
     }
@@ -12,9 +14,15 @@
     .contact-us h6 {
         font-size: 11px;
     }
+
+    /* HOME PAGE - MAIN CONTENT */
+    .side-text {
+        padding: 2rem;
+    }
 }
 
 @media screen and (max-width: 1000px) {
+    /* NAVBAR */
     .logo {
         width: 200px;
     }
@@ -23,24 +31,56 @@
         font-size: 15px;;
     }
 
+    /* FOOTER */
     .footer-nav {
         padding: 0.5rem 2rem 0.5rem 2rem;
+    }
+
+    /* HOME PAGE - MAIN CONTENT */
+    .side-text p{
+        font-size: 1.2rem !important;
+    }
+
+    .side-text {
+        padding: 1rem;
     }
 }
 
 @media screen and (max-width: 768px) {
+    /* NAVBAR */
     .logo {
         width: 150px;
+    }
+
+    /* HOME PAGE - MAIN CONTENT */
+    .bottom-content h2 {
+        font-size: 20px;
+    }
+
+    .bottom-content p {
+        font-size: small;
     }
 }
 
 @media screen and (max-width: 576px) {
+    /* NAVBAR */
     .logo {
         width: 125px;
     }
 
+    /* FOOTER */
     .contact-us {
         font-size: xx-small;
+    }
+
+    /* HOME PAGE - MAIN CONTENT */
+    .side-text p{
+        font-size: 1rem !important;
+    }
+
+    .bottom-content {
+        margin: 12px !important;
+        padding: 24px !important;
     }
 }
 
