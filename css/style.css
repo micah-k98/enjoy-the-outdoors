@@ -74,7 +74,7 @@ a {
 /* HOME PAGE - MAIN CONTENT */
 .top-content {
     align-items: center;
-    margin: 2rem;
+    margin: 1.5rem;
     background-color: #fff3cf;
 }
 
@@ -128,7 +128,7 @@ a {
 
 .divider hr {
     width: 35%;
-    margin: .25rem auto .25rem auto;
+    margin: .75rem auto .75rem auto;
 }
 
 .checkbox-section {

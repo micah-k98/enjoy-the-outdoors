@@ -60,6 +60,24 @@
     .bottom-content p {
         font-size: small;
     }
+
+    /* NATIONAL PARK PAGE */
+    .divider h5 {
+        font-size: 15px;
+    }
+
+    #top-content select, .checkbox-section label {
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .select-section {
+        padding: 1rem
+    }
+
+    header h5 {
+        font-size: medium;
+    }
 }
 
 @media screen and (max-width: 576px) {
@@ -81,6 +99,16 @@
     .bottom-content {
         margin: 12px !important;
         padding: 24px !important;
+    }
+
+    /* NATIONAL PARK PAGE */
+    
+}
+
+@media screen and (max-width: 450px) {
+    /* NATIONAL PARK PAGE */
+    #top-content select {
+        font-size: 12px;
     }
 }
 
