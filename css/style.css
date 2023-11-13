@@ -20,6 +20,10 @@ body {
     flex-direction: column;
 }
 
+a {
+    text-decoration: none;
+}
+
 
 /* NAVBAR */
 .navbar {
@@ -85,5 +89,45 @@ body {
 
 .goals-card {
     justify-content: center;
+}
+
+
+/* BREADCRUMB */
+.breadcrumb-item a{
+    color: var(--bs-secondary) !important;
+}
+
+.breadcrumb-item.active {
+    color: var(--bs-secondary-text-emphasis) !important;
+}
+
+
+/* NATIONAL PARK PAGE */
+/* .input-section {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+
+} */
+
+#top-content select{
+    width: 80%;
+    margin: auto;
+}
+
+.select-section {
+    margin: 1.5rem;
+    padding: 2rem;
+}
+
+.divider {
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.divider hr {
+    width: 35%;
+    margin: .25rem auto .25rem auto;
 }
 
