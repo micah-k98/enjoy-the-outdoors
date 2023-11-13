@@ -68,14 +68,17 @@ body {
 
 
 /* HOME PAGE - MAIN CONTENT */
-.content-container {
+.top-content {
     align-items: center;
     margin: 2rem;
-    background-color: #def9ff;
+    background-color: #fff3cf;
 }
 
 .side-text {
     padding: 4rem;
 }
 
+.bottom-content {
+    background-color: #fff3cf;
+}
 
