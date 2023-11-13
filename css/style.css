@@ -131,3 +131,8 @@ a {
     margin: .25rem auto .25rem auto;
 }
 
+.checkbox-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
