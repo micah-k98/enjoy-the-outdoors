@@ -161,3 +161,8 @@ hr {
     cursor: pointer;
     height: 4rem;
 }
+
+.display-parks-content p{
+    margin-bottom: 2px;
+    margin-left: 3px;
+}
