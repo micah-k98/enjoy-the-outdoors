@@ -181,7 +181,9 @@
   border-color: #7c914e;
   --bs-btn-active-bg: #def1d1;
   --bs-btn-active-border-color: #7c914e;
+  --bs-btn-active-color: #7c914e;
   --bs-btn-hover-bg: #def1d1;
+  --bs-btn-hover-color: #7c914e
   --bs-btn-hover-border-color: #7c914e;
   --bs-btn-disabled-bg: #def1d1;
   --bs-btn-disabled-border-color: #7c914e;
@@ -195,7 +197,9 @@
   border-color: #72653b;
   --bs-btn-active-bg: #f1e4d1;
   --bs-btn-active-border-color: #72653b;
+  --bs-btn-active-color: #72653b;
   --bs-btn-hover-bg: #f1e4d1;
+  --bs-btn-hover-color: #72653b;
   --bs-btn-hover-border-color: #72653b;
   --bs-btn-disabled-bg: #f1e4d1;
   --bs-btn-disabled-border-color: #72653b;

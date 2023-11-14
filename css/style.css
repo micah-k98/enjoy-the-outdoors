@@ -103,22 +103,17 @@ a {
 
 
 /* NATIONAL PARK PAGE */
-/* .input-section {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    justify-content: center;
-
-} */
-
-#top-content select{
-    width: 80%;
-    margin: auto;
+.main-container {
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
 }
 
-.select-section {
-    margin: 1.5rem;
-    padding: 2rem;
+.filter-parks {
+    padding: 20px 12px;
+    background-color: #fff3cf;
+    max-height: 100vh;
 }
 
 .divider {
@@ -131,8 +126,38 @@ a {
     margin: .75rem auto .75rem auto;
 }
 
+hr {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.checkbox-location-types {
+    padding: 5px 20px;
+}
+
 .checkbox-section {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.button-section {
+    display: flex;
+    column-gap: 20px;
+    justify-content: space-evenly;
+}
+
+.display-parks {
+    padding: 1rem 2rem;
+}
+
+.arrow {
+    display: flex;
+    justify-content: space-around;
+}
+
+.arrow-icon {
+    cursor: pointer;
+    height: 4rem;
 }

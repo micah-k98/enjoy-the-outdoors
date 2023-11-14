@@ -44,6 +44,30 @@
     .side-text {
         padding: 1rem;
     }
+
+    /* NATIONAL PARK PAGE */
+    .filter-parks h5 {
+        font-size: 16px;
+    }
+
+    .filter-parks select,
+    .filter-parks label,
+    .filter-parks button {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    /* NATIONAL PARK PAGE */
+    .filter-parks h5 {
+        font-size: 14px;
+    }
+
+    .filter-parks select,
+    .filter-parks label,
+    .filter-parks button {
+        font-size: 12px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -62,21 +86,8 @@
     }
 
     /* NATIONAL PARK PAGE */
-    .divider h5 {
-        font-size: 15px;
-    }
-
-    #top-content select, .checkbox-section label {
+    .display-parks h5 {
         font-size: 14px;
-        width: 100%;
-    }
-
-    .select-section {
-        padding: 1rem
-    }
-
-    header h5 {
-        font-size: medium;
     }
 }
 
@@ -99,17 +110,11 @@
     .bottom-content {
         margin: 12px !important;
         padding: 24px !important;
-    }
-
-    /* NATIONAL PARK PAGE */
-    
+    } 
 }
 
 @media screen and (max-width: 450px) {
-    /* NATIONAL PARK PAGE */
-    #top-content select {
-        font-size: 12px;
-    }
+   
 }
 
 
