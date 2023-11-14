@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function searchButtonClicked(){
-    const parkName = document.getElementById("selectParkName");
-    const location = document.getElementById("selectLocation");
+    const parkName = document.getElementById("selectParkName").value;
+    const location = document.getElementById("selectLocation").value;
     
 }
 
@@ -46,11 +46,13 @@ function addData(nationalParksArray, locationsArray, parkTypesArray) {
         
                 const input = document.createElement("input");
                 input.type = "checkbox";
-                input.id = "viewAllParks";
+                    // to assign unique id with each, I used the value itself and removed the space between the words
+                    let inputId = parkType.replace(/\s/g, '');
+                input.id = inputId;
                 input.classList.add("form-check-input");
     
                 const label = document.createElement("label");
-                label.for = "viewAllParks";
+                label.for = inputId;
                 label.classList.add("form-check-label");
                 label.innerText = parkType;
     
