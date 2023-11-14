@@ -2,16 +2,33 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     
-    
-    document.addEventListener("click", searchButtonClicked);
     addData(nationalParksArray, locationsArray, parkTypesArray);
     displayParks(nationalParksArray);
+
+    const searchButton = document.getElementById("searchButton");
+    searchButton.addEventListener("click", searchButtonClicked);
 })
 
 function searchButtonClicked(){
     const parkName = document.getElementById("selectParkName").value;
     const location = document.getElementById("selectLocation").value;
+
+    console.log(parkName);
+    console.log(location);
     
+    let checkedLocationTypes = isLocationTypeChecked();
+    console.log(checkedLocationTypes);
+}
+
+function isLocationTypeChecked() {
+    const allCheckboxesContainer = document.getElementById("checkbox-container").children;
+    let checked = [];
+
+    for(let child of allCheckboxesContainer) {
+        if(document.getElementById(child.children[0].id).checked) checked.push(child.children[0].id)
+    }
+
+    return checked; 
 }
 
 function addData(nationalParksArray, locationsArray, parkTypesArray) {
@@ -63,8 +80,6 @@ function addData(nationalParksArray, locationsArray, parkTypesArray) {
         })
     }
 }
-
-
 
 function displayParks(parks) {
     const mainContainer = document.getElementById("display-parks-content");
