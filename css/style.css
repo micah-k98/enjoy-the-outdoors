@@ -130,7 +130,7 @@ a {
 hr {
     width: 90%;
     margin-left: auto;
-    margin-right: auto
+    margin-right: auto;
 }
 
 .checkbox-location-types {
@@ -150,7 +150,7 @@ hr {
 }
 
 .display-parks {
-    padding: 1rem 2rem;
+    padding: 1rem 1rem 1rem 2rem;
 }
 
 .arrow {
@@ -165,5 +165,14 @@ hr {
 
 .display-parks-content p{
     margin-bottom: 2px;
-    margin-left: 3px;
+    margin-left: 5px;
+}
+
+.display-parks-content h4{
+    color: #99a462;
+}
+
+
+.hrJS {
+    width: 100%;
 }

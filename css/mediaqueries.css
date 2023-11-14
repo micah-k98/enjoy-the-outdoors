@@ -111,6 +111,11 @@
         margin: 12px !important;
         padding: 24px !important;
     } 
+
+    /* NATIONAL PARKS PAGE */
+    .display-parks {
+        padding: 1rem 2rem;
+    }
 }
 
 @media screen and (max-width: 450px) {
