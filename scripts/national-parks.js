@@ -4,8 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     
     document.addEventListener("click", searchButtonClicked);
-    addNationalParkName(nationalParksArray);
-    addLocationCheckbox(parkTypesArray);
+    addData(nationalParksArray, locationsArray, parkTypesArray);
     displayParks(nationalParksArray);
 })
 
@@ -15,38 +14,55 @@ function searchButtonClicked(){
     
 }
 
-function addNationalParkName(parks) {
-    const selectContainer = document.getElementById("selectParkName");
+function addData(nationalParksArray, locationsArray, parkTypesArray) {
+    addNationalParkName(nationalParksArray);
+    addLocations(locationsArray);
+    addLocationCheckbox(parkTypesArray);
 
-        for(let park of parks) {
-            const option = new Option(park.LocationName, park.LocationName);
-            selectContainer.appendChild(option);
-        }
-}
-
-function addLocationCheckbox(parkTypes) {
-    const allCheckboxesContainer = document.getElementById("checkbox-container");
-
-    parkTypes.forEach(parkType => {
-        const  checkboxContainer = document.createElement("div");
-        checkboxContainer.classList.add("form-check")
+    function addNationalParkName(parks) {
+        const selectContainer = document.getElementById("selectParkName");
     
-            const input = document.createElement("input");
-            input.type = "checkbox";
-            input.id = "viewAllParks";
-            input.classList.add("form-check-input");
-
-            const label = document.createElement("label");
-            label.for = "viewAllParks";
-            label.classList.add("form-check-label");
-            label.innerText = parkType;
-
-            checkboxContainer.appendChild(input);
-            checkboxContainer.appendChild(label);
-
-        allCheckboxesContainer.appendChild(checkboxContainer);
-    })
+            for(let park of parks) {
+                const option = new Option(park.LocationName, park.LocationName);
+                selectContainer.appendChild(option);
+            }
+    }
+    
+    function addLocations(locations) {
+        const selectContainer = document.getElementById("selectLocation");
+    
+            for(let state of locations) {
+                const option = new Option(state, state);
+                selectContainer.appendChild(option);
+            }
+    }
+    
+    function addLocationCheckbox(parkTypes) {
+        const allCheckboxesContainer = document.getElementById("checkbox-container");
+    
+        parkTypes.forEach(parkType => {
+            const  checkboxContainer = document.createElement("div");
+            checkboxContainer.classList.add("form-check")
+        
+                const input = document.createElement("input");
+                input.type = "checkbox";
+                input.id = "viewAllParks";
+                input.classList.add("form-check-input");
+    
+                const label = document.createElement("label");
+                label.for = "viewAllParks";
+                label.classList.add("form-check-label");
+                label.innerText = parkType;
+    
+                checkboxContainer.appendChild(input);
+                checkboxContainer.appendChild(label);
+    
+            allCheckboxesContainer.appendChild(checkboxContainer);
+        })
+    }
 }
+
+
 
 function displayParks(parks) {
     const mainContainer = document.getElementById("display-parks-content");
