@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     
     document.addEventListener("click", searchButtonClicked);
+    addNationalParkName(nationalParksArray);
     addLocationCheckbox(parkTypesArray);
     displayParks(nationalParksArray);
 })
@@ -14,8 +15,17 @@ function searchButtonClicked(){
     
 }
 
+function addNationalParkName(parks) {
+    const selectContainer = document.getElementById("selectParkName");
+
+        for(let park of parks) {
+            const option = new Option(park.LocationName, park.LocationName);
+            selectContainer.appendChild(option);
+        }
+}
+
 function addLocationCheckbox(parkTypes) {
-    const parentContainer = document.getElementById("checkbox-container");
+    const allCheckboxesContainer = document.getElementById("checkbox-container");
 
     parkTypes.forEach(parkType => {
         const  checkboxContainer = document.createElement("div");
@@ -34,7 +44,7 @@ function addLocationCheckbox(parkTypes) {
             checkboxContainer.appendChild(input);
             checkboxContainer.appendChild(label);
 
-        parentContainer.appendChild(checkboxContainer);
+        allCheckboxesContainer.appendChild(checkboxContainer);
     })
 }
 
