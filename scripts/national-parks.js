@@ -2,8 +2,41 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     
+    
+    document.addEventListener("click", searchButtonClicked);
+    addLocationCheckbox(parkTypesArray);
     displayParks(nationalParksArray);
 })
+
+function searchButtonClicked(){
+    const parkName = document.getElementById("selectParkName");
+    const location = document.getElementById("selectLocation");
+    
+}
+
+function addLocationCheckbox(parkTypes) {
+    const parentContainer = document.getElementById("checkbox-container");
+
+    parkTypes.forEach(parkType => {
+        const  checkboxContainer = document.createElement("div");
+        checkboxContainer.classList.add("form-check")
+    
+            const input = document.createElement("input");
+            input.type = "checkbox";
+            input.id = "viewAllParks";
+            input.classList.add("form-check-input");
+
+            const label = document.createElement("label");
+            label.for = "viewAllParks";
+            label.classList.add("form-check-label");
+            label.innerText = parkType;
+
+            checkboxContainer.appendChild(input);
+            checkboxContainer.appendChild(label);
+
+        parentContainer.appendChild(checkboxContainer);
+    })
+}
 
 function displayParks(parks) {
     const mainContainer = document.getElementById("display-parks-content");
@@ -22,65 +55,65 @@ function displayPark(park, parentContainer) {
     displayDetails(park, eachParkContainerDiv);
 }
 
-function displayDetails(park, parentDiv) {
-    const parkNameH4 = document.createElement("h4");
-    parkNameH4.innerText = park.LocationName;
-    parentDiv.appendChild(parkNameH4);
+    function displayDetails(park, parentDiv) {
+        const parkNameH4 = document.createElement("h4");
+        parkNameH4.innerText = park.LocationName;
+        parentDiv.appendChild(parkNameH4);
 
-    getAddress(park, parentDiv);
-    getPhoneFaxNumber(park, parentDiv);
-    getVisit(park, parentDiv);
+        getAddress(park, parentDiv);
+        getPhoneFaxNumber(park, parentDiv);
+        getVisit(park, parentDiv);
 
-    const dividerHr = document.createElement("hr");
-    dividerHr.classList.add("hrJS");
-    parentDiv.appendChild(dividerHr);
-}
+        const dividerHr = document.createElement("hr");
+        dividerHr.classList.add("hrJS");
+        parentDiv.appendChild(dividerHr);
+    }
 
-function getAddress(park, parentDiv) {  
-    const addressP = document.createElement("p"); 
+    function getAddress(park, parentDiv) {  
+        const addressP = document.createElement("p"); 
 
-        addressP.innerText = "Address: ";
-        for(const key in park) {
-            if(key == "Address" || key == "City")
-            {
-                if(park[key] != 0) addressP.innerText += `${park[key]}, `;
-            }
-            else if (key == "State" || key == "ZipCode") addressP.innerText += `${park[key]} `;
-        }
-
-    parentDiv.appendChild(addressP);
-}
-
-function getPhoneFaxNumber(park, parentDiv) {
-    const phoneNumberP = document.createElement("p");
-        if (park.Phone != 0) {
-            phoneNumberP.innerText = "Phone Number: " + park.Phone;
-        }
-    parentDiv.appendChild(phoneNumberP);
-
-    const faxNumberP = document.createElement("p");
-        if (park.Fax != 0) {
-            faxNumberP.innerText = "Fax Number: " + park.Fax;
-            parentDiv.appendChild(faxNumberP);
-        }
-    parentDiv.appendChild(faxNumberP);
-}
-
-function getVisit(park, parentDiv) {
-    const visitP = document.createElement("p");
-        const visitA = document.createElement("a");
-
-            if (park.Visit != undefined) {
-                visitP.innerText = "Visit: ";
-                visitA.innerText = park.Visit;
-                visitA.href = park.Visit;
-                visitA.target = "_blank"
-                
+            addressP.innerText = "Address: ";
+            for(const key in park) {
+                if(key == "Address" || key == "City")
+                {
+                    if(park[key] != 0) addressP.innerText += `${park[key]}, `;
+                }
+                else if (key == "State" || key == "ZipCode") addressP.innerText += `${park[key]} `;
             }
 
-        visitP.appendChild(visitA)
-    parentDiv.appendChild(visitP);
-}
+        parentDiv.appendChild(addressP);
+    }
+
+    function getPhoneFaxNumber(park, parentDiv) {
+        const phoneNumberP = document.createElement("p");
+            if (park.Phone != 0) {
+                phoneNumberP.innerText = "Phone Number: " + park.Phone;
+            }
+        parentDiv.appendChild(phoneNumberP);
+
+        const faxNumberP = document.createElement("p");
+            if (park.Fax != 0) {
+                faxNumberP.innerText = "Fax Number: " + park.Fax;
+                parentDiv.appendChild(faxNumberP);
+            }
+        parentDiv.appendChild(faxNumberP);
+    }
+
+    function getVisit(park, parentDiv) {
+        const visitP = document.createElement("p");
+            const visitA = document.createElement("a");
+
+                if (park.Visit != undefined) {
+                    visitP.innerText = "Visit: ";
+                    visitA.innerText = park.Visit;
+                    visitA.href = park.Visit;
+                    visitA.target = "_blank"
+                    
+                }
+
+            visitP.appendChild(visitA)
+        parentDiv.appendChild(visitP);
+    }
 
 
 // function doesValueExists(details, park, parentDiv) {
