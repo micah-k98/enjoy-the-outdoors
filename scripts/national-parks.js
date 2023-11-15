@@ -8,24 +8,29 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchButton = document.getElementById("searchButton");
     searchButton.addEventListener("click", searchButtonClicked);
 
+    const resetButton = document.getElementById("resetButton");
+    resetButton.addEventListener("click", resetButtonClicked);
+
     const viewAllParksBox = document.getElementById("viewAllParks");
     viewAllParksBox.addEventListener("click", searchButtonClicked)
+
+    const selectParkName = document.getElementById("selectParkName");
+    selectParkName.addEventListener("click", searchButtonClicked)
 })
 
 function searchButtonClicked(){
     const parkName = document.getElementById("selectParkName");
     const location = document.getElementById("selectLocation");
     const allCheckboxesContainer = document.getElementById("checkbox-container").children;
-    
     let checkedLocationTypes = isLocationTypeChecked(allCheckboxesContainer);
+    const viewAllParks = document.getElementById("viewAllParks").checked;
 
-    isViewAllParksChecked(parkName, location, allCheckboxesContainer);
+    // this function will check if either of the select park name or view all parks is selected/checked
+    viewAllParkAndSelectPark(parkName, location, allCheckboxesContainer, viewAllParks);
 }
 
-function isViewAllParksChecked(parkName, location, allCheckboxesContainer) {
-    const viewAllParks = document.getElementById("viewAllParks").checked;
-    if(viewAllParks  == true)
-    {
+function viewAllParkAndSelectPark(parkName, location, allCheckboxesContainer, viewAllParks) {
+    if(viewAllParks  == true) {
         parkName.value = "0";
         parkName.disabled = true;
         location.value = "0";
@@ -35,13 +40,34 @@ function isViewAllParksChecked(parkName, location, allCheckboxesContainer) {
             child.children[0].disabled = true
         }
     }
-    else {
-        parkName.disabled = false;
-        location.disabled = false;
+    else if(parkName.value != "0") {
+        location.value = "0";
+        location.disabled = true;
         for(let child of allCheckboxesContainer){
-            child.children[0].disabled = false
+            document.getElementById(child.children[0].id).checked = false;
+            child.children[0].disabled = true
         }
     }
+    else {
+        enableThis(parkName, location, allCheckboxesContainer);
+    }
+}
+
+function resetButtonClicked() {
+    const parkName = document.getElementById("selectParkName");
+    const location = document.getElementById("selectLocation");
+    const allCheckboxesContainer = document.getElementById("checkbox-container").children;
+    const viewAllParks = document.getElementById("viewAllParks");
+
+    parkName.value = "0";
+    parkName.disabled = false;
+    location.value = "0";
+    location.disabled = false;
+    for(let child of allCheckboxesContainer){
+        document.getElementById(child.children[0].id).checked = false;
+        child.children[0].disabled = false;
+    }
+    viewAllParks.checked = false;
 }
 
 function isLocationTypeChecked(allCheckboxesContainer) {
@@ -52,6 +78,14 @@ function isLocationTypeChecked(allCheckboxesContainer) {
     }
 
     return checked; 
+}
+
+function enableThis(parkName, location, allCheckboxesContainer) {
+    parkName.disabled = false;
+    location.disabled = false;
+    for(let child of allCheckboxesContainer){
+        child.children[0].disabled = false
+    }
 }
 
 function addData(nationalParksArray, locationsArray, parkTypesArray) {
