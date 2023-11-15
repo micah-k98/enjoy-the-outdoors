@@ -3,7 +3,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     
     addData(nationalParksArray, locationsArray, parkTypesArray);
-    displayParks(nationalParksArray);
+    // displayParks(nationalParksArray);
 
     const searchButton = document.getElementById("searchButton");
     searchButton.addEventListener("click", searchButtonClicked);
@@ -29,6 +29,20 @@ function getInput() {
     return input;
 }
 
+function resetButtonClicked() {
+    const input = getInput();
+
+    input.parkName.value = "0";
+    input.parkName.disabled = false;
+    input.location.value = "0";
+    input.location.disabled = false;
+    for(let child of input.allCheckboxesContainer){
+        document.getElementById(child.children[0].id).checked = false;
+        child.children[0].disabled = false;
+    }
+    input.viewAllParks.checked = false;
+}
+
 function searchButtonClicked(){
     const input = getInput();
     let checkedLocationTypes = isLocationTypeChecked(input.allCheckboxesContainer);
@@ -47,32 +61,25 @@ function viewAllParkAndSelectPark(input) {
             // document.getElementById(child.children[0].id).checked = false;
             child.children[0].disabled = true
         }
+        displayParks(nationalParksArray);
     }
-    else if(input.parkName.value != "0") {
+    else if(input.parkName.value != "0" && input.parkName.disabled == false) {
         input.location.value = "0";
         input.location.disabled = true;
         for(let child of input.allCheckboxesContainer){
             document.getElementById(child.children[0].id).checked = false;
             child.children[0].disabled = true
         }
+        filterParkName(input.parkName.value);
     }
     else {
         enableThis(input);
     }
 }
 
-function resetButtonClicked() {
-    const input = getInput();
-
-    input.parkName.value = "0";
-    input.parkName.disabled = false;
-    input.location.value = "0";
-    input.location.disabled = false;
-    for(let child of input.allCheckboxesContainer){
-        document.getElementById(child.children[0].id).checked = false;
-        child.children[0].disabled = false;
-    }
-    input.viewAllParks.checked = false;
+function filterParkName(selectedParkName) {
+    let parkDetails = nationalParksArray.filter(a => a.LocationName == selectedParkName);
+    displayParks(parkDetails);
 }
 
 function isLocationTypeChecked(allCheckboxesContainer) {
