@@ -47,12 +47,26 @@ function resetButtonClicked() {
 
 function searchButtonClicked(){
     const input = getInput();
+
+    let filteredByLocation = nationalParksArray.filter(a => a.State == input.location.value);
     let checkedLocationTypes = isLocationTypeChecked(input.allCheckboxesContainer);
     
-    // this function will check if either of the select park name or view all parks is selected/checked
-    // viewAllParkAndSelectPark();
+    let filteredParks = [];  
+    filteredByLocation.forEach(parkLocation => {
+        checkedLocationTypes.forEach(locationType => {
+            if(parkLocation.LocationName.search(locationType) != -1)
+            {
+                if(filteredParks.length == 0 ) filteredParks.push(parkLocation);
+                else {
+                    let test = filteredParks.find(filteredPark => filteredPark.LocationName == parkLocation.LocationName) 
+                    if(test == undefined) filteredParks.push(parkLocation);
+                }
+            }
+        });
+    });
 }
 
+// this function will check if either of the select park name or view all parks is selected/checked
 function viewAllParkAndSelectPark() {
     const input = getInput();
     if(input.viewAllParks.checked  == true) {
@@ -90,7 +104,23 @@ function isLocationTypeChecked(allCheckboxesContainer) {
     let checked = [];
 
     for(let child of allCheckboxesContainer) {
-        if(document.getElementById(child.children[0].id).checked) checked.push(child.children[0].id)
+        if(document.getElementById(child.children[0].id).checked) checked.push(child.children[1].innerText)
+    }
+
+    for(let i = 0; i < checked.length; i++ ) {
+        const space = checked[i].indexOf(" ");
+
+        switch(checked[i].substring(0, space)) {
+            case "National":
+                checked[i] = checked[i].substring(space + 1);
+                break;
+            case "Recreation":
+                checked[i] = checked[i].substring(0, space);
+                break;
+            case "Scenic":
+                checked[i] = checked[i].substring(0, space);
+                break;
+        }
     }
 
     return checked; 
@@ -194,11 +224,12 @@ function displayPark(park, parentContainer) {
 
             addressP.innerText = "Address: ";
             for(const key in park) {
-                if(key == "Address" || key == "City")
+                if(key == "Address" || key == "City" || key == "ZipCode")
                 {
                     if(park[key] != 0) addressP.innerText += `${park[key]}, `;
                 }
-                else if (key == "State" || key == "ZipCode") addressP.innerText += `${park[key]} `;
+                else if (key == "State") addressP.innerText += `${park[key]} `;
+                
             }
 
         parentDiv.appendChild(addressP);
