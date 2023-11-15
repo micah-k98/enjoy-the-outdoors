@@ -10,18 +10,31 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function searchButtonClicked(){
-    const parkName = document.getElementById("selectParkName").value;
-    const location = document.getElementById("selectLocation").value;
-
-    console.log(parkName);
-    console.log(location);
+    const parkName = document.getElementById("selectParkName");
+    const location = document.getElementById("selectLocation");
+    const allCheckboxesContainer = document.getElementById("checkbox-container").children;
     
-    let checkedLocationTypes = isLocationTypeChecked();
-    console.log(checkedLocationTypes);
+    let checkedLocationTypes = isLocationTypeChecked(allCheckboxesContainer);
+
+    isViewAllParksChecked(parkName, location, allCheckboxesContainer);
 }
 
-function isLocationTypeChecked() {
-    const allCheckboxesContainer = document.getElementById("checkbox-container").children;
+function isViewAllParksChecked(parkName, location, allCheckboxesContainer) {
+    const viewAllParks = document.getElementById("viewAllParks").checked;
+    if(viewAllParks  == true)
+    {
+        parkName.value = "0";
+        parkName.disabled = true;
+        location.value = "0";
+        location.disabled = true;
+        for(let child of allCheckboxesContainer){
+            document.getElementById(child.children[0].id).checked = false;
+            child.children[0].disabled = true
+        }
+    }
+}
+
+function isLocationTypeChecked(allCheckboxesContainer) {
     let checked = [];
 
     for(let child of allCheckboxesContainer) {
