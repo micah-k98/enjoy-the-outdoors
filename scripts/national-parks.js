@@ -24,6 +24,7 @@ function getInput() {
     input.location = document.getElementById("selectLocation");
     // this targets the form-check for each checkbox and label
     input.allCheckboxesContainer = document.getElementById("checkbox-container").children;
+    input.checkedLocationTypes = isLocationTypeChecked(input.allCheckboxesContainer);
     input.viewAllParks = document.getElementById("viewAllParks");
 
     return input;
@@ -48,22 +49,14 @@ function resetButtonClicked() {
 function searchButtonClicked(){
     const input = getInput();
 
-    let filteredByLocation = nationalParksArray.filter(a => a.State == input.location.value);
-    let checkedLocationTypes = isLocationTypeChecked(input.allCheckboxesContainer);
-    
-    let filteredParks = [];  
-    filteredByLocation.forEach(parkLocation => {
-        checkedLocationTypes.forEach(locationType => {
-            if(parkLocation.LocationName.search(locationType) != -1)
-            {
-                if(filteredParks.length == 0 ) filteredParks.push(parkLocation);
-                else {
-                    let test = filteredParks.find(filteredPark => filteredPark.LocationName == parkLocation.LocationName) 
-                    if(test == undefined) filteredParks.push(parkLocation);
-                }
-            }
-        });
-    });
+    // this filter only by location
+    if(input.location != "0") {
+        const filteredByLocation = filterByLocation();
+        if(input.checkedLocationTypes == 0) displayParks(filteredByLocation);
+        else filterParksByLocationType();       
+    }
+    else if(input.checkedLocationTypes != 0) filterParksByLocationType();
+
 }
 
 // this function will check if either of the select park name or view all parks is selected/checked
@@ -98,6 +91,37 @@ function viewAllParkAndSelectPark() {
 function filterParkName(selectedParkName) {
     let parkDetails = nationalParksArray.filter(a => a.LocationName == selectedParkName);
     displayParks(parkDetails);
+}
+
+function filterByLocation() {
+    const input = getInput();
+    return nationalParksArray.filter(a => a.State == input.location.value);
+}
+
+function filterParksByLocationType() {
+    const input = getInput();
+    const filteredByLocation = filterByLocation();
+    let currentParkArray = [];
+
+    if(filteredByLocation != 0) currentParkArray = filteredByLocation;
+    else currentParkArray = nationalParksArray;
+
+    let filteredParks = [];  
+    currentParkArray.forEach(park => {
+        input.checkedLocationTypes.forEach(locationType => {
+            if(park.LocationName.search(locationType) != -1)
+            {
+                if(filteredParks.length == 0 ) filteredParks.push(park);
+                else {
+                    let test = filteredParks.find(filteredPark => filteredPark.LocationName == park.LocationName) 
+                    if(test == undefined) filteredParks.push(park);
+                }
+            }
+        });
+    });
+
+    displayParks(filteredParks);
+    
 }
 
 function isLocationTypeChecked(allCheckboxesContainer) {
