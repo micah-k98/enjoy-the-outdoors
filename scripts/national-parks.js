@@ -18,56 +18,61 @@ document.addEventListener("DOMContentLoaded", () => {
     selectParkName.addEventListener("click", searchButtonClicked)
 })
 
-function searchButtonClicked(){
-    const parkName = document.getElementById("selectParkName");
-    const location = document.getElementById("selectLocation");
-    const allCheckboxesContainer = document.getElementById("checkbox-container").children;
-    let checkedLocationTypes = isLocationTypeChecked(allCheckboxesContainer);
-    const viewAllParks = document.getElementById("viewAllParks").checked;
+function getInput() {
+    const input = {};
+    input.parkName = document.getElementById("selectParkName");
+    input.location = document.getElementById("selectLocation");
+    // this targets the form-check for each checkbox and label
+    input.allCheckboxesContainer = document.getElementById("checkbox-container").children;
+    input.viewAllParks = document.getElementById("viewAllParks");
 
-    // this function will check if either of the select park name or view all parks is selected/checked
-    viewAllParkAndSelectPark(parkName, location, allCheckboxesContainer, viewAllParks);
+    return input;
 }
 
-function viewAllParkAndSelectPark(parkName, location, allCheckboxesContainer, viewAllParks) {
-    if(viewAllParks  == true) {
-        parkName.value = "0";
-        parkName.disabled = true;
-        location.value = "0";
-        location.disabled = true;
-        for(let child of allCheckboxesContainer){
-            document.getElementById(child.children[0].id).checked = false;
+function searchButtonClicked(){
+    const input = getInput();
+    let checkedLocationTypes = isLocationTypeChecked(input.allCheckboxesContainer);
+    
+    // this function will check if either of the select park name or view all parks is selected/checked
+    viewAllParkAndSelectPark(input);
+}
+
+function viewAllParkAndSelectPark(input) {
+    if(input.viewAllParks.checked  == true) {
+        // input.parkName.value = "0";
+        input.parkName.disabled = true;
+        // input.location.value = "0";
+        input.location.disabled = true;
+        for(let child of input.allCheckboxesContainer){
+            // document.getElementById(child.children[0].id).checked = false;
             child.children[0].disabled = true
         }
     }
-    else if(parkName.value != "0") {
-        location.value = "0";
-        location.disabled = true;
-        for(let child of allCheckboxesContainer){
+    else if(input.parkName.value != "0") {
+        input.location.value = "0";
+        input.location.disabled = true;
+        for(let child of input.allCheckboxesContainer){
             document.getElementById(child.children[0].id).checked = false;
             child.children[0].disabled = true
         }
     }
     else {
-        enableThis(parkName, location, allCheckboxesContainer);
+        enableThis(input);
     }
 }
 
 function resetButtonClicked() {
-    const parkName = document.getElementById("selectParkName");
-    const location = document.getElementById("selectLocation");
-    const allCheckboxesContainer = document.getElementById("checkbox-container").children;
-    const viewAllParks = document.getElementById("viewAllParks");
+    const input = getInput();
 
-    parkName.value = "0";
-    parkName.disabled = false;
-    location.value = "0";
-    location.disabled = false;
-    for(let child of allCheckboxesContainer){
+    input.parkName.value = "0";
+    input.parkName.disabled = false;
+    input.location.value = "0";
+    input.location.disabled = false;
+    for(let child of input.allCheckboxesContainer){
         document.getElementById(child.children[0].id).checked = false;
         child.children[0].disabled = false;
     }
-    viewAllParks.checked = false;
+    input.viewAllParks.checked = false;
 }
 
 function isLocationTypeChecked(allCheckboxesContainer) {
@@ -80,13 +85,15 @@ function isLocationTypeChecked(allCheckboxesContainer) {
     return checked; 
 }
 
-function enableThis(parkName, location, allCheckboxesContainer) {
-    parkName.disabled = false;
-    location.disabled = false;
-    for(let child of allCheckboxesContainer){
+function enableThis(input) {
+    input.parkName.disabled = false;
+    input.location.disabled = false;
+    for(let child of input.allCheckboxesContainer){
         child.children[0].disabled = false
     }
 }
+
+
 
 function addData(nationalParksArray, locationsArray, parkTypesArray) {
     addNationalParkName(nationalParksArray);
@@ -126,7 +133,7 @@ function addData(nationalParksArray, locationsArray, parkTypesArray) {
                 input.classList.add("form-check-input");
     
                 const label = document.createElement("label");
-                label.for = inputId;
+                label.setAttribute("for", inputId);
                 label.classList.add("form-check-label");
                 label.innerText = parkType;
     
