@@ -12,10 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
     resetButton.addEventListener("click", resetButtonClicked);
 
     const viewAllParksBox = document.getElementById("viewAllParks");
-    viewAllParksBox.addEventListener("click", searchButtonClicked)
+    viewAllParksBox.addEventListener("click", searchButtonClicked);
 
     const selectParkName = document.getElementById("selectParkName");
-    selectParkName.addEventListener("click", searchButtonClicked)
+    selectParkName.addEventListener("click", viewAllParkAndSelectPark);
 })
 
 function getInput() {
@@ -48,10 +48,11 @@ function searchButtonClicked(){
     let checkedLocationTypes = isLocationTypeChecked(input.allCheckboxesContainer);
     
     // this function will check if either of the select park name or view all parks is selected/checked
-    viewAllParkAndSelectPark(input);
+    viewAllParkAndSelectPark();
 }
 
-function viewAllParkAndSelectPark(input) {
+function viewAllParkAndSelectPark() {
+    const input = getInput();
     if(input.viewAllParks.checked  == true) {
         // input.parkName.value = "0";
         input.parkName.disabled = true;
@@ -74,6 +75,7 @@ function viewAllParkAndSelectPark(input) {
     }
     else {
         enableThis(input);
+        displayParks(nationalParksArray);
     }
 }
 
