@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const searchButton = document.getElementById("searchButton");
     searchButton.addEventListener("click", searchButtonClicked);
+
+    const viewAllParksBox = document.getElementById("viewAllParks");
+    viewAllParksBox.addEventListener("click", searchButtonClicked)
 })
 
 function searchButtonClicked(){
@@ -30,6 +33,13 @@ function isViewAllParksChecked(parkName, location, allCheckboxesContainer) {
         for(let child of allCheckboxesContainer){
             document.getElementById(child.children[0].id).checked = false;
             child.children[0].disabled = true
+        }
+    }
+    else {
+        parkName.disabled = false;
+        location.disabled = false;
+        for(let child of allCheckboxesContainer){
+            child.children[0].disabled = false
         }
     }
 }
