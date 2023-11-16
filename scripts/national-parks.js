@@ -1,8 +1,10 @@
 "use strict"
 
+window.addEventListener("resize", addNationalParkName)
+
 document.addEventListener("DOMContentLoaded", () => {
     
-    addData(nationalParksArray, locationsArray, parkTypesArray);
+    addData();
     displayParks(nationalParksArray);
 
     const searchButton = document.getElementById("searchButton");
@@ -20,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const arrow = document.getElementById("arrow");
     document.addEventListener("scroll", whenUserScrolled);
     arrow.addEventListener("click", goToTop);
-    
+
 })
 
 function getInput() {
@@ -191,19 +193,10 @@ function goToTop() {
 }
 
 
-function addData(nationalParksArray, locationsArray, parkTypesArray) {
-    addNationalParkName(nationalParksArray);
+function addData() {
+    addNationalParkName();
     addLocations(locationsArray);
     addLocationCheckbox(parkTypesArray);
-
-    function addNationalParkName(parks) {
-        const selectContainer = document.getElementById("selectParkName");
-    
-            for(let park of parks) {
-                const option = new Option(park.LocationName, park.LocationName);
-                selectContainer.appendChild(option);
-            }
-    }
     
     function addLocations(locations) {
         const selectContainer = document.getElementById("selectLocation");
@@ -239,6 +232,27 @@ function addData(nationalParksArray, locationsArray, parkTypesArray) {
             allCheckboxesContainer.appendChild(checkboxContainer);
         })
     }
+}
+
+function addNationalParkName() {
+    const parks = nationalParksArray;
+    const selectContainer = document.getElementById("selectParkName");
+    if(selectContainer.children.length > 0) {
+        const temp = selectContainer.children[0];
+        selectContainer.innerText = "";
+        selectContainer.appendChild(temp);
+    }
+
+        for(let park of parks) {
+            const option = new Option(park.LocationName, park.LocationName);
+            option.title = park.LocationName;
+            let trimMultiplier = 10;
+            let lengthToShortenTo = Math.round(parseInt(selectContainer.clientWidth, 10) / trimMultiplier);
+            if(option.value.length > lengthToShortenTo) {
+                option.innerText = option.value.substring(0, lengthToShortenTo) + "...";
+            }
+            selectContainer.appendChild(option);
+        }
 }
 
 function displayParks(parks) {

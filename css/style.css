@@ -108,7 +108,7 @@ a {
     padding: 0;
     margin-left: auto;
     margin-right: auto;
-    width: 90%;
+    width: 93%;
 }
 .content-container {
     margin-bottom: 3rem;
@@ -118,6 +118,10 @@ a {
     padding: 20px 12px;
     background-color: #fff3cf;
     max-height: 90vh;
+}
+
+#selectParkName {
+    font-size: 14px;
 }
 
 .divider {
