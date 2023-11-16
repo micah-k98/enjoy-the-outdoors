@@ -84,7 +84,6 @@ function viewAllParkAndSelectPark() {
     }
     else {
         enableThis(input);
-        if(input.parkName.value == "0") displayParks(nationalParksArray);
     }
 }
 
@@ -156,8 +155,21 @@ function enableThis(input) {
     for(let child of input.allCheckboxesContainer){
         child.children[0].disabled = false
     }
-
-    filterParkName(input.parkName.value);
+    
+    if(input.parkName.value != "0") {
+        viewAllParkAndSelectPark();
+        return;
+    }
+    if(input.location.value != "0") {
+        searchButtonClicked();
+        return;
+    }
+    else if(input.checkedLocationTypes != 0) 
+    {
+        searchButtonClicked();
+        return;
+    }
+    else displayParks(nationalParksArray);
 }
 
 
