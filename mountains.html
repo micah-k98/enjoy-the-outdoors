@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wild Heart Adventures Organization</title>
+        <link rel="shortcut icon" href="images/wild-heart-adventures-logo.png" type="image/x-icon">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/bootstrap-color.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/mediaqueries.css">
+
+        <script src="scripts/nationalParkData.js"></script>
+        <script src="scripts/locationData.js"></script>
+        <script src="scripts/parkTypeData.js"></script>
+        <script src="scripts/mountains.js"></script>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+            <div class="container-fluid bg-primary">
+                <img src="images/wild-heart-adventures-logo-navbar.png" width="300" class="ms-5 logo" alt="Wild Heart Adventure logo">
+                <button class="navbar-toggler me-5" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse ps-5" id="navbarColor01">
+                    <ul class="navbar-nav me-auto fs-5">
+                        <li class="nav-item">
+                            <a class="nav-link ps-5" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ps-5" href="national-parks.html">National Parks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active ps-5" href="mountains.html">Mountains
+                                <span class="visually-hidden">(current)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main-container mb-5">
+            <nav class="my-3 ms-3" style="--bs-breadcrumb-divider: '>'">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Mountains</li>
+                </ol>
+            </nav>
+
+            <section class="content-container row" id="content-container">
+                <div class="filter-mountains col-md-4 col-sm-5" id="filter-mountains">
+                    <h5 class="text-center">Find Mountains to explore by...</h5>
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label for="selectMountainName" class="form-label visually-hidden">Select Mountain Name</label>
+                            <select name="Mountain Name" id="selectMountainName" class="form-select">
+                                <option value="0">Select Mountain Name</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row divider">
+                        <hr class="col-md-5 col-4">
+                        <h5 class="text-center col-md-1 col-2 m-0 p-0">or</h5>
+                        <hr class="col-md-5 col-4">
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label for="selectEffortLevel" class="form-label visually-hidden">Select Effort Level</label>
+                            <select name="Effort Level" id="selectEffortLevel" class="form-select">
+                                <option value="0">Select Effort Level</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="elevation-section" id="elevationSection">
+                        <h5 class="ps-2 mt-3">Elevation:</h5>
+                        <div class="elevation-min-max" id="elevation-min-max">
+                            <div class="form-group">
+                                <label for="elevationMin" class="form-label">Min: </label>
+                                <input type="number" class="form-control" id="elevationMin">
+                            </div>
+                            <div class="form-group">
+                                <label for="elevationMax" class="form-label">Max: </label>
+                                <input type="number" class="form-control" id="elevationMax">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-section">
+                        <button id="searchButton" class="btn btn-secondary mt-3 p-2 col-md-5 col-4">Search</button>
+                    </div>
+                    <hr>
+                    <div class="checkbox-section">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="viewAllMountains">
+                            <label for="viewAllMountains" class="form-check-label">View All Mountains</label>
+                        </div>
+                    </div>
+                    <div class="button-section g-2">
+                        <!-- <button id="searchButton" class="btn btn-secondary mt-3 p-2 col-md-5 col-4">Search</button> -->
+                        <button id="resetButton" class="btn btn-secondary mt-3 p-2 col-md-5 col-4">Reset</button>
+                    </div>
+                </div>
+
+                <div class="display-mountains col-md-8 col-sm-7" id="display-mountains">
+                    <div class="text-center p-2">
+                        <h5 class="mt-3">Your adventure starts today!</h5>
+                    </div>
+                    <div class="text-center p-2">
+                        <h6 class="mt-1">Results: <span id="results"></span></h6>
+                    </div>
+                    <hr class="hrJS">
+                    <div class="text-center">
+                        <p id="alert-message" hidden>Sorry! <span id="state"></span> currently doesn't have checked location types.</p>
+                    </div>
+                    <div class="display-mountains-content" id="display-mountains-content">
+                        <div class="each-mountain">
+                            <!-- <h4>Mt. Washington</h4>
+                            <p>Effort Level: 6288</p>
+                            <p>Description: Mt. Washington (6,288 feet) is the highest peak east of the Mississippi River and north of the Carolinas. The upper part of the mountain has a climate similar to that of northern Labrador and supports a variety of alpine flora and fauna.</p>
+                            <div class="button-display-section">
+                                <button id="seeTimesButton" class="btn btn-secondary mt-1 p-2 col-md-5 col-4">See Sunrise/Sunset Times</button>
+                            </div> -->
+                            <!-- this will later show the sunrise/sunset times -->
+                            <!-- <div class="alert alert-dismissible alert-primary">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- will serve as a button for an easy way to scroll up -->
+        <img src="images/arrow.png" alt="Arrow icon" class="arrow-icon" id="arrow">
+        
+        <footer class="footer-container bg-primary">
+            <div class="container-fluid m-0">
+                <div class="footer-nav">
+                    <div class="contact-us col-xl-4 col-lg-4 col-6 mt-3">
+                        <div>
+                            <h6>Contact Us:</h6>
+                            <ul>
+                                <li>wildheart.adventures@gmail.com</li>
+                                <li>(480) 274-1830</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-6 text-center">
+                        <img src="images/wild-heart-adventures-logo-navbar.png" width="300" class="logo" alt="Wild Heart Adventure logo">
+                    </div>
+                    <div class="col-xl-4 col-lg-3 mt-4">
+                        <ul class="web-accounts">
+                            <li class="nav-item">
+                                <a class="nav-link" href=""><img src="images/instagram-logo.png" alt="Instagram Logo" title="Instagram"></a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href=""><img src="images/facebook-logo.png" alt="Facebook Logo" title="Facebook"></a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href=""><img src="images/pinterest-logo.png" alt="Pinterest Logo" title="Pinterest"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <h6 class="text-center">&copy; 2023 All Rights Reserved.</h6>
+        </footer>
+
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </body>
+</html>
