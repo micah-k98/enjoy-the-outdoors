@@ -16,6 +16,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const selectParkName = document.getElementById("selectParkName");
     selectParkName.addEventListener("click", viewAllParkAndSelectPark);
+
+    const arrow = document.getElementById("arrow");
+    document.addEventListener("scroll", whenUserScrolled);
+    arrow.addEventListener("click", goToTop);
+    
 })
 
 function getInput() {
@@ -172,6 +177,18 @@ function enableThis(input) {
     else displayParks(nationalParksArray);
 }
 
+function whenUserScrolled() {
+    const arrow = document.getElementById("arrow");
+    if(document.body.scrollTop > 950 || document.documentElement.scrollTop > 950) {
+        arrow.style.display = "block";
+    }
+    else arrow.style.display = "none";
+}
+
+function goToTop() {
+    document.body.scrollTop = 0 // for Safari
+    document.documentElement.scrollTop = 0; // for Chrome, Firefox, IE and Opera
+}
 
 
 function addData(nationalParksArray, locationsArray, parkTypesArray) {
@@ -225,12 +242,24 @@ function addData(nationalParksArray, locationsArray, parkTypesArray) {
 }
 
 function displayParks(parks) {
+    const input = getInput();
     const mainContainer = document.getElementById("display-parks-content");
     mainContainer.innerText = "";
 
     parks.forEach(park => {
         displayPark(park, mainContainer);
     });
+
+    const results = document.getElementById("results");
+    results.innerText = parks.length;
+
+    if(parks.length == 0) {
+        const alertMessage = document.getElementById("alert-message");
+        alertMessage.hidden = false;
+        const state = document.getElementById("state");
+        state.innerText = input.location.value;
+
+    }
 }
 
 function displayPark(park, parentContainer) {
@@ -260,11 +289,15 @@ function displayPark(park, parentContainer) {
 
             addressP.innerText = "Address: ";
             for(const key in park) {
-                if(key == "Address" || key == "City" || key == "ZipCode")
+                if(key == "Address" || key == "City")
                 {
                     if(park[key] != 0) addressP.innerText += `${park[key]}, `;
                 }
                 else if (key == "State") addressP.innerText += `${park[key]} `;
+                else if (key == "ZipCode") 
+                {
+                    if(park[key] != 0) addressP.innerText += `${park[key]} `;
+                }
                 
             }
 

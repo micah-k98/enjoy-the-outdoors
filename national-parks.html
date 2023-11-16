@@ -101,7 +101,13 @@
                     <div class="text-center p-2">
                         <h5 class="mt-3">Your adventure starts today!</h5>
                     </div>
+                    <div class="text-center p-2">
+                        <h6 class="mt-1">Results: <span id="results"></span></h6>
+                    </div>
                     <hr class="hrJS">
+                    <div class="text-center">
+                        <p id="alert-message" hidden>Sorry! <span id="state"></span> currently doesn't have checked location types.</p>
+                    </div>
                     <div class="display-parks-content" id="display-parks-content">
                         <!-- <div class="each-park">
                             <h4>Abraham Lincoln Birthplace National Historical Park</h4>
@@ -115,12 +121,9 @@
             </section>
         </main>
 
-        <div class="container row">
-            <div class="col-8 arrow">
-                <img src="images/arrow.png" alt="Arrow icon" class="arrow-icon">
-            </div>
-        </div>
-
+        <!-- will serve as a button for an easy way to scroll up -->
+        <img src="images/arrow.png" alt="Arrow icon" class="arrow-icon" id="arrow">
+        
         <footer class="footer-container bg-primary">
             <div class="container-fluid m-0">
                 <div class="footer-nav">

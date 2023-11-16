@@ -110,11 +110,14 @@ a {
     margin-right: auto;
     width: 90%;
 }
+.content-container {
+    margin-bottom: 3rem;
+}
 
 .filter-parks {
     padding: 20px 12px;
     background-color: #fff3cf;
-    max-height: 100vh;
+    max-height: 90vh;
 }
 
 .divider {
@@ -153,14 +156,21 @@ hr {
     padding: 1rem 1rem 1rem 2rem;
 }
 
-.arrow {
-    display: flex;
-    justify-content: space-around;
-}
-
 .arrow-icon {
     cursor: pointer;
-    height: 4rem;
+    height: 5rem;
+    display: none; 
+    position: fixed; /* Fixed/sticky position */
+    bottom: 180px; /* Place the button at the bottom of the page */
+    left: 17.5vw;
+    z-index: 99; /* Make sure it does not overlap */
+    cursor: pointer; 
+    padding: 15px; 
+}
+
+.img {
+    content: url(images/arrow.png);
+    
 }
 
 .display-parks-content p{

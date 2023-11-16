@@ -89,6 +89,10 @@
     .display-parks h5 {
         font-size: 14px;
     }
+
+    .display-parks h6 {
+        font-size: 12px;
+    }
 }
 
 @media screen and (max-width: 576px) {
@@ -113,8 +117,16 @@
     } 
 
     /* NATIONAL PARKS PAGE */
+    .filter-parks {
+        max-height: 120vh;
+    }
+
     .display-parks {
-        padding: 1rem 2rem;
+        padding: 1rem 3rem 1rem 2rem;
+    }
+
+    .arrow-icon {
+        left: 85vw;
     }
 }
 
