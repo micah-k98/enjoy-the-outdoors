@@ -4,6 +4,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     addData();
     displayMountains(mountainsArray);
+
+    const resetButton = document.getElementById("resetButton");
+    resetButton.addEventListener("click", resetButtonClicked);
+
+    const viewAllMountainsBox = document.getElementById("viewAllMountains");
+    viewAllMountainsBox.addEventListener("change", viewAllAndSelectMountain);
+
+    const selectMountainName = document.getElementById("selectMountainName");
+    selectMountainName.addEventListener("change", viewAllAndSelectMountain);
 });
 
 function getInput() {
@@ -16,6 +25,49 @@ function getInput() {
 
     return input;
 }
+
+function resetButtonClicked() {
+    const input = getInput();
+
+    input.viewAllMountains.checked = false;
+    input.mountainName.value = "0";
+    input.effortLevel.value = "0";
+    input.elevationMin.value = "0";
+    input.elevationMax.value = "0";
+    enableThis(input);
+}
+
+function viewAllAndSelectMountain() {
+    const input = getInput();
+    if(input.viewAllMountains.checked == true) {
+        input.mountainName.disabled = true;
+        input.effortLevel.disabled = true;
+        input.elevationMin.disabled = true;
+        input.elevationMax.disabled = true;
+        displayMountains(mountainsArray);
+    }
+    else if (input.mountainName.value != "0" && input.mountainName.disabled == false) {
+        input.effortLevel.value = "0";
+        input.effortLevel.disabled = true;
+        input.elevationMin.value = "0";
+        input.elevationMin.disabled = true;
+        input.elevationMax.value = "0";
+        input.elevationMax.disabled = true;
+    }
+    else {
+        enableThis(input);
+    }
+}
+
+function enableThis(input) {
+    input.mountainName.disabled = false;
+    input.effortLevel.disabled = false;
+    input.elevationMin.disabled = false;
+    input.elevationMax.disabled = false;
+}
+
+
+
 
 function addData() {
     addMountainName();
