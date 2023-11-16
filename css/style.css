@@ -104,16 +104,6 @@ a {
 
 
 /* NATIONAL PARK PAGE */
-.main-container {
-    padding: 0;
-    margin-left: auto;
-    margin-right: auto;
-    width: 93%;
-}
-.content-container {
-    margin-bottom: 3rem;
-}
-
 .filter-parks {
     padding: 20px 12px;
     background-color: #fff3cf;
@@ -122,6 +112,33 @@ a {
 
 #selectParkName {
     font-size: 14px;
+}
+
+.checkbox-location-types {
+    padding: 5px 20px;
+}
+
+.checkbox-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.display-parks {
+    padding: 1rem 1rem 1rem 2rem;
+}
+
+
+/* FOR BOTH PARKS AND MOUNTAINS PAGE */
+.main-container {
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 93%;
+}
+
+.content-container {
+    margin-bottom: 3rem;
 }
 
 .divider {
@@ -140,26 +157,29 @@ hr {
     margin-right: auto;
 }
 
-.checkbox-location-types {
-    padding: 5px 20px;
-}
-
-.checkbox-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .button-section {
     display: flex;
     column-gap: 20px;
     justify-content: space-evenly;
 }
 
-.display-parks {
-    padding: 1rem 1rem 1rem 2rem;
+.display-parks-content p,
+.display-mountains-content p{
+    margin-bottom: 2px;
+    margin-left: 5px;
 }
 
+.display-parks-content h4,
+.display-mountains-content h4{
+    color: #99a462;
+}
+
+.hrJS {
+    width: 100%;
+}
+
+
+/* FOR EASY SCROLL UP */
 .arrow-icon {
     cursor: pointer;
     height: 5rem;
@@ -177,16 +197,32 @@ hr {
     
 }
 
-.display-parks-content p{
-    margin-bottom: 2px;
-    margin-left: 5px;
+
+/* MOUNTAINS PAGE */
+.filter-mountains {
+    padding: 20px 12px;
+    background-color: #fff3cf;
+    max-height: 90vh;
 }
 
-.display-parks-content h4{
-    color: #99a462;
+.elevation-section {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
 }
 
+.elevation-min-max {
+    display: flex;
+    justify-content: space-evenly;
+    column-gap: 1rem;
+}
 
-.hrJS {
-    width: 100%;
+.elevation-min-max .form-group{
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+}
+
+.display-mountains {
+    padding: 1rem 1rem 1rem 2rem;
 }
