@@ -19,6 +19,23 @@
     .side-text {
         padding: 2rem;
     }
+
+    /* MOUNTAINS PAGE */
+    .filter-mountains {
+        max-height: 60vh;
+    }
+
+    .elevation-section,
+    .elevation-min-max {
+        flex-direction: column;
+        row-gap: .50rem;
+    }
+
+    #elevationMin {
+        margin-left: 3px;
+    }
+
+
 }
 
 @media screen and (max-width: 1000px) {
@@ -45,26 +62,36 @@
         padding: 1rem;
     }
 
-    /* NATIONAL PARK PAGE */
-    .filter-parks h5 {
+    /* NATIONAL PARK AND MOUNTAINS PAGE */
+    .filter-parks h5,
+    .filter-mountains h5 {
         font-size: 16px;
     }
 
     .filter-parks label,
-    .filter-parks button {
+    .filter-parks button,
+    .filter-mountains label,
+    .filter-mountains button {
         font-size: 14px;
     }
 }
 
 @media screen and (max-width: 850px) {
-    /* NATIONAL PARK PAGE */
-    .filter-parks h5 {
+    /* NATIONAL PARK AND MOUNTAINS PAGE */
+    .filter-parks h5,
+    #selectLocation,
+    .filter-mountains h5,
+    #selectMountainName,
+    #selectEffortLevel,
+    .form-control {
         font-size: 14px;
     }
 
     #selectParkName,
     .filter-parks label,
-    .filter-parks button {
+    .filter-parks button,
+    .filter-mountains label,
+    .filter-mountains button {
         font-size: 12px;
     }
 }
@@ -84,12 +111,14 @@
         font-size: small;
     }
 
-    /* NATIONAL PARK PAGE */
-    .display-parks h5 {
+    /* NATIONAL PARK AND MOUNTAINS PAGE */
+    .display-parks h5,
+    .display-mountains h5 {
         font-size: 14px;
     }
 
-    .display-parks h6 {
+    .display-parks h6,
+    .display-mountains h6 {
         font-size: 12px;
     }
 }
@@ -120,12 +149,18 @@
         max-height: 120vh;
     }
 
-    .display-parks {
+    .display-parks, 
+    .display-mountains {
         padding: 1rem 4rem 1rem 2rem;
     }
 
     .arrow-icon {
         left: 85vw;
+    }
+
+    /* MOUNTAINS PAGE */
+    .filter-mountains {
+        max-height: 70vh;
     }
 }
 

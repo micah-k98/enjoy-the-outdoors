@@ -202,7 +202,7 @@ hr {
 .filter-mountains {
     padding: 20px 12px;
     background-color: #fff3cf;
-    max-height: 90vh;
+    max-height: 50vh;
 }
 
 .elevation-section {
@@ -220,7 +220,7 @@ hr {
 .elevation-min-max .form-group{
     display: flex;
     align-items: center;
-    column-gap: .5rem;
+    column-gap: .40rem;
 }
 
 .display-mountains {

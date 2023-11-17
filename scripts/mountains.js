@@ -21,6 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const elevationCheckbox = document.getElementById("elevationCheckbox");
     elevationCheckbox.addEventListener("click", isElevationBoxChecked);
+
+    const arrow = document.getElementById("arrow");
+    document.addEventListener("scroll", whenUserScrolled);
+    arrow.addEventListener("click", goToTop);
 });
 
 function getInput() {
@@ -173,6 +177,19 @@ function getMaxElevation() {
     return maxValue;
 }
 
+function whenUserScrolled() {
+    const arrow = document.getElementById("arrow");
+    if(document.body.scrollTop > 950 || document.documentElement.scrollTop > 950) {
+        arrow.style.display = "block";
+    }
+    else arrow.style.display = "none";
+}
+
+function goToTop() {
+    document.body.scrollTop = 0 // for Safari
+    document.documentElement.scrollTop = 0; // for Chrome, Firefox, IE and Opera
+}
+
 
 function addData() {
     addMountainName();
@@ -222,13 +239,10 @@ function displayMountains(mountains) {
     const results = document.getElementById("results");
     results.innerText = mountains.length;
 
-    // if(mountains.length == 0) {
-    //     const alertMessage = document.getElementById("alert-message");
-    //     alertMessage.hidden = false;
-    //     const state = document.getElementById("state");
-    //     state.innerText = input.location.value;
-
-    // }
+    if(mountains.length == 0) {
+        const alertMessage = document.getElementById("alert-message");
+        alertMessage.hidden = false;
+    }
 }
 
 function displayMountain(mountain, parentContainer) {
