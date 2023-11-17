@@ -254,46 +254,77 @@ function displayMountain(mountain, parentContainer) {
 }
 
     function displayDetails(mountain, parentDiv) {
-        const mountainNameH4 = document.createElement("h4");
-        mountainNameH4.innerText = mountain.name;
-        parentDiv.appendChild(mountainNameH4);
+        const textImageDiv = document.createElement("div");
+        textImageDiv.classList.add("square");
 
-        getElevation(mountain, parentDiv);
-        getEffortLevel(mountain, parentDiv);
-        getDescription(mountain, parentDiv);
+            const image = document.createElement("img");
+            image.src = "images/mountains/" + mountain.img;
+            image.alt = mountain.name;
+            image.classList.add("img-fluid");
+            textImageDiv.appendChild(image);
+
+            const mountainNameH4 = document.createElement("h4");
+            mountainNameH4.innerText = mountain.name;
+            textImageDiv.appendChild(mountainNameH4);
+
+            addElevation(mountain, textImageDiv);
+            addEffortLevel(mountain, textImageDiv);
+            addDescription(mountain, textImageDiv);
+
+        parentDiv.appendChild(textImageDiv);
        
+        addSunriseSunsetButton(mountain, parentDiv);
 
         const dividerHr = document.createElement("hr");
         dividerHr.classList.add("hrJS");
         parentDiv.appendChild(dividerHr);
     }
 
-    function getElevation(mountain, parentDiv) {
+    function addElevation(mountain, textImageDiv) {
         const elevationP = document.createElement("p");
             const elevationSpan = document.createElement("span");
             elevationSpan.innerText = "Elevation: ";
             elevationSpan.classList.add("fw-medium");
             elevationP.appendChild(elevationSpan);
             elevationSpan.insertAdjacentText("afterend", mountain.elevation);
-        parentDiv.appendChild(elevationP);
+        textImageDiv.appendChild(elevationP);
     }
 
-    function getEffortLevel(mountain, parentDiv) {
+    function addEffortLevel(mountain, textImageDiv) {
         const effortLevelP = document.createElement("p");
             const effortLevelSpan = document.createElement("span");
             effortLevelSpan.innerText = "Effort Level: ";
             effortLevelSpan.classList.add("fw-medium");
             effortLevelP.appendChild(effortLevelSpan);
             effortLevelSpan.insertAdjacentText("afterend", mountain.effort);
-        parentDiv.appendChild(effortLevelP);
+        textImageDiv.appendChild(effortLevelP);
     }
 
-    function getDescription(mountain, parentDiv) {
+    function addDescription(mountain, textImageDiv) {
         const descriptionP = document.createElement("p");
             const descriptionSpan = document.createElement("span");
             descriptionSpan.innerText = "Description: ";
             descriptionSpan.classList.add("fw-medium");
             descriptionP.appendChild(descriptionSpan);
             descriptionSpan.insertAdjacentText("afterend", mountain.desc);
-        parentDiv.appendChild(descriptionP);
+        textImageDiv.appendChild(descriptionP);
+    }
+
+    function addSunriseSunsetButton(mountain, parentDiv) {
+        const buttonDiv = document.createElement("div");
+        buttonDiv.classList.add("button-display-section");
+
+            const button = document.createElement("button");
+            button.id = "seeTimesButton";
+            button.classList.add("btn");
+            button.classList.add("btn-secondary");
+            button.classList.add("mt-1");
+            button.classList.add("p-1");
+            button.classList.add("col-md-5");
+            button.classList.add("col-sm-6");
+            button.classList.add("col-9");
+            button.innerText = "See Sunrise/Sunset Times";
+            buttonDiv.appendChild(button);
+
+        parentDiv.appendChild(buttonDiv);
     }

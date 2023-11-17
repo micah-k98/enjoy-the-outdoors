@@ -226,3 +226,32 @@ hr {
 .display-mountains {
     padding: 1rem 1rem 1rem 2rem;
 }
+
+/* .each-mountain {
+    display: flex;
+    flex-wrap: nowrap;
+    column-gap: .5rem;
+}
+
+.each-mountain .col-xxl-9{
+    width: 74%
+}
+
+.each-mountain .col-xl-8{
+    width: 70%
+}
+
+.each-mountain .col-xl-4{
+    width: 29%
+} */
+
+.square img {
+    float: right;
+    margin: 5px;
+    height: 20vh;
+}
+
+.square p {
+    text-align: justify;
+}
+

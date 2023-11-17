@@ -35,7 +35,19 @@
         margin-left: 3px;
     }
 
+    .square img {
+        float: right;
+        margin: 5px;
+        height: 20vh;
+    }
 
+    .mountain-arrow {
+        left: 92vw;
+    }
+
+    .display-mountains {
+        padding: 1rem 4rem 1rem 2rem;
+    }
 }
 
 @media screen and (max-width: 1000px) {
@@ -91,7 +103,8 @@
     .filter-parks label,
     .filter-parks button,
     .filter-mountains label,
-    .filter-mountains button {
+    .filter-mountains button,
+    #seeTimesButton {
         font-size: 12px;
     }
 }
@@ -113,7 +126,8 @@
 
     /* NATIONAL PARK AND MOUNTAINS PAGE */
     .display-parks h5,
-    .display-mountains h5 {
+    .display-mountains h5,
+    .each-mountain p {
         font-size: 14px;
     }
 
@@ -149,8 +163,7 @@
         max-height: 120vh;
     }
 
-    .display-parks, 
-    .display-mountains {
+    .display-parks {
         padding: 1rem 4rem 1rem 2rem;
     }
 
@@ -161,6 +174,14 @@
     /* MOUNTAINS PAGE */
     .filter-mountains {
         max-height: 70vh;
+    }
+
+    .square img {
+        float:none;
+        display: block;
+        margin: auto;
+        height: auto;
+        margin-bottom: .50rem;
     }
 }
 
