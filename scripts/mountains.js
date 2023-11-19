@@ -239,10 +239,9 @@ function displayMountains(mountains) {
     const results = document.getElementById("results");
     results.innerText = mountains.length;
 
-    if(mountains.length == 0) {
-        const alertMessage = document.getElementById("alert-message");
-        alertMessage.hidden = false;
-    }
+    const alertMessage = document.getElementById("alert-message");
+    if(mountains.length == 0) alertMessage.hidden = false;
+    else alertMessage.hidden = true;
 }
 
 function displayMountain(mountain, parentContainer) {

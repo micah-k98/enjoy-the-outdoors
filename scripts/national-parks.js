@@ -271,14 +271,14 @@ function displayParks(parks) {
 
     const results = document.getElementById("results");
     results.innerText = parks.length;
-
+    
+    const alertMessage = document.getElementById("alert-message");
     if(parks.length == 0) {
-        const alertMessage = document.getElementById("alert-message");
         alertMessage.hidden = false;
         const state = document.getElementById("state");
         state.innerText = input.location.value;
-
     }
+    else alertMessage.hidden = true;
 }
 
 function displayPark(park, parentContainer) {
