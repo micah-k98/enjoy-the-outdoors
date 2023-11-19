@@ -125,7 +125,11 @@ a {
 }
 
 .display-parks {
-    padding: 1rem 1rem 1rem 2rem;
+    padding: 1rem 2rem 1rem 2rem;
+}
+
+.accordion {
+    margin-top: 2rem;
 }
 
 
@@ -185,8 +189,8 @@ hr {
     height: 5rem;
     display: none; 
     position: fixed; /* Fixed/sticky position */
-    bottom: 180px; /* Place the button at the bottom of the page */
-    left: 17.5vw;
+    bottom: 140px; /* Place the button at the bottom of the page */
+    left: 95vw;
     z-index: 99; /* Make sure it does not overlap */
     cursor: pointer; 
     padding: 15px; 
@@ -226,24 +230,6 @@ hr {
 .display-mountains {
     padding: 1rem 1rem 1rem 2rem;
 }
-
-/* .each-mountain {
-    display: flex;
-    flex-wrap: nowrap;
-    column-gap: .5rem;
-}
-
-.each-mountain .col-xxl-9{
-    width: 74%
-}
-
-.each-mountain .col-xl-8{
-    width: 70%
-}
-
-.each-mountain .col-xl-4{
-    width: 29%
-} */
 
 .square img {
     float: right;

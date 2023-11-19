@@ -51,51 +51,180 @@
             </nav>
 
             <section class="content-container row" id="content-container">
-                <div class="filter-parks col-md-4 col-sm-5" id="filter-parks">
-                    <h5 class="text-center">Find National Parks by...</h5>
-                    <div class="row">
-                        <div class="form-group col-12">
-                            <label for="selectParkName" class="form-label visually-hidden">Select National Park Name</label>
-                            <select name="National Park Name" id="selectParkName" class="form-select">
-                                <option value="0">Select National Park Name</option>
-                            </select>
+                <div class="filter-parks-container col-md-4 col-sm-5" >
+                    <div class="filter-parks" id="filter-parks">
+                        <h5 class="text-center">Find National Parks by...</h5>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label for="selectParkName" class="form-label visually-hidden">Select National Park Name</label>
+                                <select name="National Park Name" id="selectParkName" class="form-select">
+                                    <option value="0">Select National Park Name</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row divider">
+                            <hr class="col-md-5 col-4">
+                            <h5 class="text-center col-md-1 col-2 m-0 p-0">or</h5>
+                            <hr class="col-md-5 col-4">
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label for="selectLocation" class="form-label visually-hidden">Select Location</label>
+                                <select name="Location" id="selectLocation" class="form-select">
+                                    <option value="0">Select Location</option>
+                                </select>
+                            </div>
+                        </div>
+                        <h5 class="ps-2 mt-3">Location Types</h5>
+                        <div class="checkbox-location-types" id="checkbox-container">
+                            <!-- <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="viewAllParks">
+                                <label for="viewAllParks" class="form-check-label">National Park</label>
+                            </div> -->
+                        </div>
+                        <div class="button-section">
+                            <button id="searchButton" class="btn btn-secondary mt-3 p-2 col-md-5 col-4">Search</button>
+                        </div>
+                        <hr>
+                        <div class="checkbox-section">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="viewAllParks">
+                                <label for="viewAllParks" class="form-check-label">View All National Parks</label>
+                            </div>
+                        </div>
+                        <div class="button-section g-2">
+                            <!-- <button id="searchButton" class="btn btn-secondary mt-3 p-2 col-md-5 col-4">Search</button> -->
+                            <button id="resetButton" class="btn btn-secondary mt-3 p-2 col-md-5 col-4">Reset</button>
                         </div>
                     </div>
-                    <div class="row divider">
-                        <hr class="col-md-5 col-4">
-                        <h5 class="text-center col-md-1 col-2 m-0 p-0">or</h5>
-                        <hr class="col-md-5 col-4">
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-12">
-                            <label for="selectLocation" class="form-label visually-hidden">Select Location</label>
-                            <select name="Location" id="selectLocation" class="form-select">
-                                <option value="0">Select Location</option>
-                            </select>
+
+                    <!-- accordion section -->
+                    <div class="accordion" id="accordion-section">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                Top 15 National Parks for 2023
+                            </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion-section" style="">
+                            <div class="accordion-body">
+                                According to U.S. News, here are the <strong>Top 15 National Parks</strong> to visit for 2023!
+                                <div id="carouselIndicators" class="carousel slide mt-2">
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="8" aria-label="Slide 9"></button>
+                                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="9" aria-label="Slide 10"></button>
+                                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="10" aria-label="Slide 11"></button>
+                                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="11" aria-label="Slide 12"></button>
+                                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="12" aria-label="Slide 13"></button>
+                                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="13" aria-label="Slide 14"></button>
+                                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="14" aria-label="Slide 15"></button>
+                                    </div>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="images/glacier-national-park.jpg" class="d-block w-100" alt="Glacier National Park photo from wallup.net" title="Glacier National Park">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/grand-canyon-national-park.jpg" class="d-block w-100" alt="Grand Canyon National Park photo from cntraveler.com" title="Grand Canyon National Park">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/yellowstone-national-park.jpg" class="d-block w-100" alt="Yellowstone National Park photo from yellowstonesafari.com" title="Yellowstone National Park">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/yosemite-national-park.jpg" class="d-block w-100" alt="Yosemite National Park photo from wallpapercave.com by wildpaw" title="Yosemite National Park">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/zion-national-park.jpg" class="d-block w-100" alt="Zion National Park photo from wallpapercave.com by kadin" title="Zion National Park">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/grand-teton-national-park.jpg" class="d-block w-100" alt="Grand Teton National Park photo from wallpapercave.com by wolfey_23" title="Grand Teton National Park">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/olympic-national-park.jpg" class="d-block w-100" alt="Olympic National Park photo from travelinginfocus.com" title="Olympic National Park">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/arches-national-park.jpg" class="d-block w-100" alt="Arches National Park photo from blog.trekaroo.com" title="Arches National Park">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/bryce-national-park.jpg" class="d-block w-100" alt="Bryce Canyon National Park photo from brycecanyoncountry.com" title="Bryce Canyon National Park">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/sequoia-national-park.jpg" class="d-block w-100" alt="Sequoia National Park photo from npca.com" title="Sequoia National Park">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/rocky-mountain-national-park.jpg" class="d-block w-100" alt="Rocky Mountain National Park photo from gallery.world" title="Rocky Mountain National Park">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/hawaii-volcanoes-national-park.jpg" class="d-block w-100" alt="Hawai'i Volcanoes National Park photo from earthtrekkers.com" title="Hawai'i Volcanoes National Park">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/crater-lake-national-park.jpg" class="d-block w-100" alt="Crater Lake National Park photo from wallpapercave.com by yeet70hi" title="Crater Lake National Park">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/acadia-national-park.jpg" class="d-block w-100" alt="Acadia National Park photo from boston.com by Kristi Palma" title="Acadia National Park">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="images/great-smoky-mountains-national-park.jpg" class="d-block w-100" alt="Great Smoky Mountains National Park photo from usatoday.com" title="Great Smoky Mountains National Park">
+                                        </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                                <ol class="mt-2">
+                                    <li>Glacier National Park</li>
+                                    <li>Grand Canyon National Park</li>
+                                    <li>Yellowstone National Park</li>
+                                    <li>Yosemite National Park</li>
+                                    <li>Zion National Park</li>
+                                    <li>Grand Teton National Park</li>
+                                    <li>Olympic National Park</li>
+                                    <li>Arches National Park</li>
+                                    <li>Bryce Canyon National Park</li>
+                                    <li>Sequoia National Park</li>
+                                    <li>Rocky Mountain National Park</li>
+                                    <li>Hawai'i Volcanoes National Park</li>
+                                    <li>Crater Lake National Park</li>
+                                    <li>Acadia National Park</li>
+                                    <li>Great Smoky Mountains National Park</li>
+                                </ol>
+                            </div>
+                            </div>
                         </div>
-                    </div>
-                    <h5 class="ps-2 mt-3">Location Types</h5>
-                    <div class="checkbox-location-types" id="checkbox-container">
-                        <!-- <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="viewAllParks">
-                            <label for="viewAllParks" class="form-check-label">National Park</label>
-                        </div> -->
-                    </div>
-                    <div class="button-section">
-                        <button id="searchButton" class="btn btn-secondary mt-3 p-2 col-md-5 col-4">Search</button>
-                    </div>
-                    <hr>
-                    <div class="checkbox-section">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="viewAllParks">
-                            <label for="viewAllParks" class="form-check-label">View All National Parks</label>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Safety Tips When Visiting National Parks
+                            </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion-section" style="">
+                            <div class="accordion-body">
+                                <strong>New to visiting national parks and doesn't know what to do?</strong> Checkout these sites for their tips and recommendations on how to prepare for a fun and safe adventure!
+                                <ul class="mt-2">
+                                <li><a href="https://www.nationalparks.org/connect/blog/tips-safely-visiting-national-parks" target="_blank">National Park Foundation: Tips for Safely Visiting National Parks</a></li>
+                                <li><a href="https://ustoa.com/blog/how-to-prepare-for-a-national-park-visit" target="_blank">United States Tour Operators Association: How to Prepare for a National Park Visit</a></li>
+                                <li><a href="https://bearfoottheory.com/overcrowded-national-parks-tips/" target="_blank">Bearfoot Theory: Tips for Visiting Overcrowded National Parks</a></li>
+                                <li><a href="https://www.nationalgeographic.com/travel/article/9-tips-to-remember--traveling-national-parks" target="_blank">National Geographic: 9 Tips to Making the Most of a National Park Trip</a></li>
+                                <li><a href="https://www.nathab.com/blog/20-tips-for-making-the-most-of-your-national-park-trip/" target="_blank">Natural Habitat Adventures: 20 Tips for Making the Most of Your National Park Trip</a></li>
+                                </ul>
+                            </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="button-section g-2">
-                        <!-- <button id="searchButton" class="btn btn-secondary mt-3 p-2 col-md-5 col-4">Search</button> -->
-                        <button id="resetButton" class="btn btn-secondary mt-3 p-2 col-md-5 col-4">Reset</button>
                     </div>
                 </div>
+                <!-- end of filter(first column) section -->
 
                 <div class="display-parks col-md-8 col-sm-7" id="display-parks">
                     <div class="text-center p-2">

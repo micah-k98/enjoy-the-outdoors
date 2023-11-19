@@ -125,14 +125,21 @@
     }
 
     /* NATIONAL PARK AND MOUNTAINS PAGE */
+    .each-park h4,
+    .each-mountain h4 {
+        font-size: 16px;
+    }
+
     .display-parks h5,
     .display-mountains h5,
-    .each-mountain p {
+    .each-mountain p,
+    .each-park p {
         font-size: 14px;
     }
 
     .display-parks h6,
-    .display-mountains h6 {
+    .display-mountains h6,
+    .accordion {
         font-size: 12px;
     }
 }
