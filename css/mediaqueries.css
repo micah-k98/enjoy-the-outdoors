@@ -66,7 +66,8 @@
     }
 
     /* HOME PAGE - MAIN CONTENT */
-    .side-text p{
+    .side-text p, 
+    .side-text {
         font-size: 1.2rem !important;
     }
 
@@ -156,7 +157,8 @@
     }
 
     /* HOME PAGE - MAIN CONTENT */
-    .side-text p{
+    .side-text p, 
+    .side-text {
         font-size: 1rem !important;
     }
 
