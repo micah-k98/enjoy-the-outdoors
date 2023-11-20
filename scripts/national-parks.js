@@ -72,13 +72,10 @@ function searchButtonClicked(){
 function viewAllParkAndSelectPark() {
     const input = getInput();
     if(input.viewAllParks.checked  == true) {
-        // input.parkName.value = "0";
         input.parkName.disabled = true;
-        // input.location.value = "0";
         input.location.disabled = true;
         input.searchButton.disabled = true;
         for(let child of input.allCheckboxesContainer){
-            // document.getElementById(child.children[0].id).checked = false;
             child.children[0].disabled = true
         }
         displayParks(nationalParksArray);
