@@ -36,8 +36,18 @@ function getInput() {
     input.elevationMax = document.getElementById("elevationMax");
     input.viewAllMountains = document.getElementById("viewAllMountains");
     input.searchButton = document.getElementById("searchButton");
+    input.timeSection = document.getElementById("timeSection");
 
     return input;
+}
+
+function getStyle() {
+    const cssStyle ={};
+    cssStyle.filterMountainsDiv = document.getElementById("filter-mountains");
+    cssStyle.cssObj = window.getComputedStyle(cssStyle.filterMountainsDiv);
+    cssStyle.maxHeight = parseFloat(cssStyle.cssObj.getPropertyValue("max-height"));
+    
+    return cssStyle;
 }
 
 function resetButtonClicked() {
@@ -45,6 +55,7 @@ function resetButtonClicked() {
 
     input.viewAllMountains.checked = false;
     input.mountainName.value = "0";
+    input.timeSection.hidden = true;
     input.effortLevel.value = "0";
     input.elevationCheckbox.checked = false;
     input.elevationMin.value = getMinElevation();
@@ -69,6 +80,10 @@ function viewAllAndSelectMountain() {
     const input = getInput();
     if(input.viewAllMountains.checked == true) {
         input.mountainName.disabled = true;
+        input.timeSection.hidden = true;
+        const cssStyle = getStyle();
+        cssStyle.filterMountainsDiv.style.maxHeight = cssStyle.maxHeight - 208 + "px";
+        input.timeSection.disabled = true;
         input.effortLevel.disabled = true;
         input.elevationCheckbox.disabled = true;
         input.elevationMin.disabled = true;
@@ -97,6 +112,8 @@ function viewAllAndSelectMountain() {
 function filterMountainName(selectedMountainName) {
     let mountainDetails = mountainsArray.filter(m => m.name == selectedMountainName);
     displayMountains(mountainDetails);
+    displaySunriseSunsetTime();
+
 }
 
 function filterByEffortLevel() {
@@ -150,7 +167,12 @@ function enableThis(input) {
         searchButtonClicked();
         return
     }
-    else displayMountains(mountainsArray);
+    else {
+        displayMountains(mountainsArray);
+        input.timeSection.hidden = true;
+        const cssStyle = getStyle();
+        cssStyle.filterMountainsDiv.style.maxHeight = cssStyle.maxHeight - 208 + "px";
+    }
 }
 
 function getMinElevation() {
@@ -190,6 +212,8 @@ function goToTop() {
     document.documentElement.scrollTop = 0; // for Chrome, Firefox, IE and Opera
 }
 
+
+// Section for all Data functions and displaying it
 
 function addData() {
     addMountainName();
@@ -272,7 +296,8 @@ function displayMountain(mountain, parentContainer) {
 
         parentDiv.appendChild(textImageDiv);
        
-        addSunriseSunsetButton(mountain, parentDiv);
+        // addSunriseSunsetButton(mountain, parentDiv);
+        // addTimeMessage(mountain, parentDiv)
 
         const dividerHr = document.createElement("hr");
         dividerHr.classList.add("hrJS");
@@ -309,21 +334,53 @@ function displayMountain(mountain, parentContainer) {
         textImageDiv.appendChild(descriptionP);
     }
 
-    function addSunriseSunsetButton(mountain, parentDiv) {
-        const buttonDiv = document.createElement("div");
-        buttonDiv.classList.add("button-display-section");
+    function displaySunriseSunsetTime() {
+        const input = getInput();
+        const cssStyle = getStyle();
+        cssStyle.filterMountainsDiv.style.maxHeight = cssStyle.maxHeight + 208 + "px";
+        input.timeSection.hidden = false;
 
-            const button = document.createElement("button");
-            button.id = "seeTimesButton";
-            button.classList.add("btn");
-            button.classList.add("btn-secondary");
-            button.classList.add("mt-1");
-            button.classList.add("p-1");
-            button.classList.add("col-md-5");
-            button.classList.add("col-sm-6");
-            button.classList.add("col-9");
-            button.innerText = "See Sunrise/Sunset Times";
-            buttonDiv.appendChild(button);
+        const sunrise = document.getElementById("sunrise");
+        const sunset = document.getElementById("sunset");
 
-        parentDiv.appendChild(buttonDiv);
+        newMountainData.forEach(mountain => {
+            if (input.mountainName.value == mountain.name) {
+                let sunriseTime = getTime(mountain.sunrise);
+                let sunsetTime = getTime(mountain.sunset);
+                sunrise.innerText = `${sunriseTime}`;
+                sunset.innerText = `${sunsetTime}`;
+            }
+        });
+    }
+
+    function getTime(time) {
+        // is it AM or PM?
+        let offset = -5;
+        const space = time.indexOf(" ");
+        let amORpm = time.substring(space + 1);
+        
+    
+        // get the hours
+        const colon = time.indexOf(":");
+        let orginalHours = time.substring(0, colon);
+        let hours = +time.substring(0, colon);
+        let newHours = 0;
+        // conditions
+        if(amORpm == "AM") {
+            newHours = hours + offset;
+            if(newHours < 0) {
+                newHours += 12;
+                time.replace(amORpm, "PM");
+            }
+        }
+        else {
+            hours += 12;
+            newHours = hours + offset;
+            if(newHours < 12) {
+                time.replace(amORpm, "AM");
+            }
+            else if(newHours > 12) newHours -= 12;
+        }
+    
+        return time.replace(orginalHours, newHours);
     }

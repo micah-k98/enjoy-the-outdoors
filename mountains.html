@@ -13,6 +13,7 @@
 
         <script src="scripts/mountainData.js"></script>
         <script src="scripts/mountains.js"></script>
+        <script src="scripts/fetch.js"></script>
     </head>
 
     <body>
@@ -59,6 +60,11 @@
                             </select>
                         </div>
                     </div>
+                    <div class="time-section bg-secondary col-10" id="timeSection" hidden>
+                        <h5>Today's sunrise and sunset in Eastern Time: </h5>
+                        <p class="m-0"><span class="fw-medium">Sunrise: </span> <span id="sunrise"></span></p>
+                        <p class="m-0"><span class="fw-medium">Sunset: </span><span id="sunset"></span></p>
+                    </div>
                     <div class="row divider">
                         <hr class="col-md-5 col-4">
                         <h5 class="text-center col-md-1 col-2 m-0 p-0">or</h5>
@@ -73,7 +79,6 @@
                         </div>
                     </div>
                     <div class="elevation-section mt-3 " id="elevationSection">
-                        <!-- <div class="p-2 fw-bold">Elevation:</div> -->
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" id="elevationCheckbox">
                             <label for="elevationCheckbox" class="form-check-label">Elevation: </label>
@@ -100,7 +105,6 @@
                         </div>
                     </div>
                     <div class="button-section g-2">
-                        <!-- <button id="searchButton" class="btn btn-secondary mt-3 p-2 col-md-5 col-4">Search</button> -->
                         <button id="resetButton" class="btn btn-secondary mt-3 p-2 col-md-5 col-4">Reset</button>
                     </div>
                 </div>
@@ -123,16 +127,6 @@
                                 <h4>Mt. Washington</h4>
                                 <p><span class="fw-medium">Effort Level:</span> 6288</p>
                                 <p><span class="fw-medium">Description:</span> Mt. Washington (6,288 feet) is the highest peak east of the Mississippi River and north of the Carolinas. The upper part of the mountain has a climate similar to that of northern Labrador and supports a variety of alpine flora and fauna.</p>
-                            </div>
-                            <div class="button-display-section">
-                                <button id="seeTimesButton" class="btn btn-secondary mt-1 p-1 col-md-5 col-sm-6 col-9">See Sunrise/Sunset Times</button>
-                            </div>
-                         -->
-                            
-                            <!-- this will later show the sunrise/sunset times -->
-                            <!-- <div class="alert alert-dismissible alert-primary">
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                                <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
                             </div> -->
                         </div>
                     </div>

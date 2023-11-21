@@ -22,7 +22,7 @@
 
     /* MOUNTAINS PAGE */
     .filter-mountains {
-        max-height: 60vh;
+        max-height: 70vh;
     }
 
     .elevation-section,
@@ -84,7 +84,8 @@
     .filter-parks label,
     .filter-parks button,
     .filter-mountains label,
-    .filter-mountains button {
+    .filter-mountains button,
+    .time-section p {
         font-size: 14px;
     }
 }
@@ -182,7 +183,7 @@
 
     /* MOUNTAINS PAGE */
     .filter-mountains {
-        max-height: 70vh;
+        max-height: 80vh;
     }
 
     .square img {
