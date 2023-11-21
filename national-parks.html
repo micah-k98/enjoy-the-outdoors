@@ -59,6 +59,7 @@
                                 <label for="selectParkName" class="form-label visually-hidden">Select National Park Name</label>
                                 <select name="National Park Name" id="selectParkName" class="form-select">
                                     <option value="0">Select National Park Name</option>
+                                    <!-- All national park names will be added with JavaScript -->
                                 </select>
                             </div>
                         </div>
@@ -72,15 +73,13 @@
                                 <label for="selectLocation" class="form-label visually-hidden">Select Location</label>
                                 <select name="Location" id="selectLocation" class="form-select">
                                     <option value="0">Select Location</option>
+                                    <!-- All locations/states will be added with JavaScript -->
                                 </select>
                             </div>
                         </div>
                         <h5 class="ps-2 mt-3">Location Types</h5>
                         <div class="checkbox-location-types" id="checkbox-container">
-                            <!-- <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="viewAllParks">
-                                <label for="viewAllParks" class="form-check-label">National Park</label>
-                            </div> -->
+                            <!-- Container for the whole list of checkboxes for location types -->
                         </div>
                         <div class="button-section">
                             <button id="searchButton" class="btn btn-secondary mt-3 p-2 col-md-5 col-4">Search</button>
@@ -93,12 +92,11 @@
                             </div>
                         </div>
                         <div class="button-section g-2">
-                            <!-- <button id="searchButton" class="btn btn-secondary mt-3 p-2 col-md-5 col-4">Search</button> -->
                             <button id="resetButton" class="btn btn-secondary mt-3 p-2 col-md-5 col-4">Reset</button>
                         </div>
                     </div>
 
-                    <!-- accordion section -->
+                    <!-- accordion section for entertainment/design/content purposes -->
                     <div class="accordion" id="accordion-section">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
@@ -237,14 +235,10 @@
                     <div class="text-center">
                         <p id="alert-message" hidden>Sorry! <span id="state"></span> currently doesn't have checked location types.</p>
                     </div>
+
+                    <!-- The div below is the main container for the whole output -->
                     <div class="display-parks-content" id="display-parks-content">
-                        <!-- <div class="each-park">
-                            <h4>Abraham Lincoln Birthplace National Historical Park</h4>
-                            <p>Address: 2995 Lincoln Farm Road, Hodgenville, Kentucky 42748</p>
-                            <p>Phone: (270) 358-3137</p>
-                            <p>Fax: (270) 358-3874</p>
-                            <a href=""></a>
-                        </div> -->
+                        <!-- The container for each park -->
                     </div>
                 </div>
             </section>
@@ -286,7 +280,6 @@
             <h6 class="text-center">&copy; 2023 All Rights Reserved.</h6>
         </footer>
 
-        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     </body>
 </html>

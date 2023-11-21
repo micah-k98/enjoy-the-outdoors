@@ -1,5 +1,6 @@
 "use strict"
 
+// Helps with the length of the list of options(from select form) when it's visible
 window.addEventListener("resize", addNationalParkName)
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -14,10 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
     resetButton.addEventListener("click", resetButtonClicked);
 
     const viewAllParksBox = document.getElementById("viewAllParks");
-    viewAllParksBox.addEventListener("click", viewAllParkAndSelectPark);
+    viewAllParksBox.addEventListener("click", viewAllParksAndSelectPark);
 
     const selectParkName = document.getElementById("selectParkName");
-    selectParkName.addEventListener("click", viewAllParkAndSelectPark);
+    selectParkName.addEventListener("click", viewAllParksAndSelectPark);
 
     const arrow = document.getElementById("arrow");
     document.addEventListener("scroll", whenUserScrolled);
@@ -25,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 })
 
+// Function responsible for getting all the inputted data
 function getInput() {
     const input = {};
     input.parkName = document.getElementById("selectParkName");
@@ -68,8 +70,8 @@ function searchButtonClicked(){
 
 }
 
-// this function will check if either of the select park name or view all parks is selected/checked
-function viewAllParkAndSelectPark() {
+// Function fires when there are changes in select form "Select National Park Name" and checkbox "View All National Parks"
+function viewAllParksAndSelectPark() {
     const input = getInput();
     if(input.viewAllParks.checked  == true) {
         input.parkName.disabled = true;
@@ -90,9 +92,7 @@ function viewAllParkAndSelectPark() {
         }
         filterParkName(input.parkName.value);
     }
-    else {
-        enableThis(input);
-    }
+    else enableThis(input);
 }
 
 function filterParkName(selectedParkName) {
@@ -131,6 +131,7 @@ function filterParksByLocationType() {
     
 }
 
+// Function to check which of the checkboxes are checked and to store only one word per each options like "Park" from "National Park" (used for verifying later)
 function isLocationTypeChecked(allCheckboxesContainer) {
     let checked = [];
 
@@ -157,6 +158,7 @@ function isLocationTypeChecked(allCheckboxesContainer) {
     return checked; 
 }
 
+// Function responsible for returning back the disabled parts to being enabled
 function enableThis(input) {
     input.parkName.disabled = false;
     input.location.disabled = false;
@@ -166,7 +168,7 @@ function enableThis(input) {
     }
     
     if(input.parkName.value != "0") {
-        viewAllParkAndSelectPark();
+        viewAllParksAndSelectPark();
         return;
     }
     if(input.location.value != "0") {
@@ -181,6 +183,8 @@ function enableThis(input) {
     else displayParks(nationalParksArray);
 }
 
+
+// The following two functions are for the arrow image/button for a faster way of scrolling up
 function whenUserScrolled() {
     const arrow = document.getElementById("arrow");
     if(document.body.scrollTop > 950 || document.documentElement.scrollTop > 950) {
@@ -195,6 +199,9 @@ function goToTop() {
 }
 
 
+// Section for all Data functions and displaying it
+
+// Adding data into select and checkbox forms 
 function addData() {
     addNationalParkName();
     addLocations(locationsArray);
@@ -235,28 +242,29 @@ function addData() {
         })
     }
 }
+    // Had to separate it from the function addData because it has to be called by resize window.addEventListener
+    function addNationalParkName() { 
+        const parks = nationalParksArray;
+        const selectContainer = document.getElementById("selectParkName");
+        if(selectContainer.children.length > 0) {
+            const temp = selectContainer.children[0];
+            selectContainer.innerText = "";
+            selectContainer.appendChild(temp);
+        }
 
-function addNationalParkName() { 
-    const parks = nationalParksArray;
-    const selectContainer = document.getElementById("selectParkName");
-    if(selectContainer.children.length > 0) {
-        const temp = selectContainer.children[0];
-        selectContainer.innerText = "";
-        selectContainer.appendChild(temp);
+            for(let park of parks) {
+                const option = new Option(park.LocationName, park.LocationName);
+                option.title = park.LocationName;
+                let trimMultiplier = 9;
+                let lengthToShortenTo = Math.round(parseInt(selectContainer.clientWidth, 10) / trimMultiplier);
+                if(option.value.length > lengthToShortenTo) {
+                    option.innerText = option.value.substring(0, lengthToShortenTo) + "...";
+                }
+                selectContainer.appendChild(option);
+            }
     }
 
-        for(let park of parks) {
-            const option = new Option(park.LocationName, park.LocationName);
-            option.title = park.LocationName;
-            let trimMultiplier = 9;
-            let lengthToShortenTo = Math.round(parseInt(selectContainer.clientWidth, 10) / trimMultiplier);
-            if(option.value.length > lengthToShortenTo) {
-                option.innerText = option.value.substring(0, lengthToShortenTo) + "...";
-            }
-            selectContainer.appendChild(option);
-        }
-}
-
+// Main container for the whole output
 function displayParks(parks) {
     const input = getInput();
     const mainContainer = document.getElementById("display-parks-content");
@@ -278,6 +286,7 @@ function displayParks(parks) {
     else alertMessage.hidden = true;
 }
 
+// For each park
 function displayPark(park, parentContainer) {
     const eachParkContainerDiv = document.createElement("div");
     eachParkContainerDiv.classList.add("each-park");
@@ -306,6 +315,8 @@ function displayPark(park, parentContainer) {
             addressSpan.innerText = "Address: ";
             addressSpan.classList.add("fw-medium");
         addressP.appendChild(addressSpan);
+
+            // Checks if the key in the current park has a 0 value or not
             let address = "";
             for(const key in park) {
                 if(key == "Address" || key == "City")
@@ -323,39 +334,39 @@ function displayPark(park, parentContainer) {
     }
 
     function getPhoneFaxNumber(park, parentDiv) {
-            if (park.Phone != 0) {
-                const phoneNumberP = document.createElement("p");
-                    const phoneNumberSpan = document.createElement("span");
-                    phoneNumberSpan.innerText = "Phone Number: ";
-                    phoneNumberSpan.classList.add("fw-medium");
-                phoneNumberP.appendChild(phoneNumberSpan);
-                phoneNumberSpan.insertAdjacentText("afterend", park.Phone);
-                parentDiv.appendChild(phoneNumberP);
-            }
-        
-            if (park.Fax != 0) {
-                const faxNumberP = document.createElement("p");
-                    const faxNumberSpan = document.createElement("span");
-                    faxNumberSpan.innerText = "Fax Number: ";
-                    faxNumberSpan.classList.add("fw-medium");
-                faxNumberP.appendChild(faxNumberSpan);
-                faxNumberSpan.insertAdjacentText("afterend", park.Fax);
-                parentDiv.appendChild(faxNumberP);
-            }
+        if (park.Phone != 0) {
+            const phoneNumberP = document.createElement("p");
+                const phoneNumberSpan = document.createElement("span");
+                phoneNumberSpan.innerText = "Phone Number: ";
+                phoneNumberSpan.classList.add("fw-medium");
+            phoneNumberP.appendChild(phoneNumberSpan);
+            phoneNumberSpan.insertAdjacentText("afterend", park.Phone);
+            parentDiv.appendChild(phoneNumberP);
+        }
+    
+        if (park.Fax != 0) {
+            const faxNumberP = document.createElement("p");
+                const faxNumberSpan = document.createElement("span");
+                faxNumberSpan.innerText = "Fax Number: ";
+                faxNumberSpan.classList.add("fw-medium");
+            faxNumberP.appendChild(faxNumberSpan);
+            faxNumberSpan.insertAdjacentText("afterend", park.Fax);
+            parentDiv.appendChild(faxNumberP);
+        }
     }
 
     function getVisit(park, parentDiv) {
-                if (park.Visit != undefined) {
-                    const visitP = document.createElement("p");
-                        const visitSpan = document.createElement("span");
-                        visitSpan.innerText = "Visit: ";
-                        visitSpan.classList.add("fw-medium");
-                    visitP.appendChild(visitSpan);
-                        const visitA = document.createElement("a");
-                        visitA.innerText = park.Visit;
-                        visitA.href = park.Visit;
-                        visitA.target = "_blank"
-                    visitSpan.insertAdjacentElement("afterend", visitA);
-                    parentDiv.appendChild(visitP);
-                }
+        if (park.Visit != undefined) {
+            const visitP = document.createElement("p");
+                const visitSpan = document.createElement("span");
+                visitSpan.innerText = "Visit: ";
+                visitSpan.classList.add("fw-medium");
+            visitP.appendChild(visitSpan);
+                const visitA = document.createElement("a");
+                visitA.innerText = park.Visit;
+                visitA.href = park.Visit;
+                visitA.target = "_blank"
+            visitSpan.insertAdjacentElement("afterend", visitA);
+            parentDiv.appendChild(visitP);
+        }
     }

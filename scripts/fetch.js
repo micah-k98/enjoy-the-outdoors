@@ -1,3 +1,4 @@
+// Variable for sunrise and sunset time; created so that the orignal mountainArray won't be modified
 let newMountainData = [];
 mountainsArray.forEach(mountain => {
     let object = {name: mountain.name,
@@ -6,7 +7,7 @@ mountainsArray.forEach(mountain => {
     newMountainData.push(object);
 })
 
-// function that can "fetch" the sunrise/sunset times
+// Function that can "fetch" the sunrise/sunset times
 async function getSunsetForMountain(mountains) {
     for (let i = 0; i < mountains.length; i ++)
     {
@@ -22,13 +23,10 @@ async function getSunsetForMountain(mountains) {
             newMountainData[i].sunset = data.results.sunset;
         }
     }
-    // return data;
    }
    
 // Fetch the sunset/sunrise times for a specific mountain 
 getSunsetForMountain(mountainsArray).then(data => {
-    // nothing in here
-    // this only calls the function and send the mountainsArray data
+    // Nothing in here
+    // This only calls the function and send the mountainsArray data
    });
-      
-   console.log(newMountainData);
